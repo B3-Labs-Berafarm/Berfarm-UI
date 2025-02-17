@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles and CSS Variables */
+@layer base {
+  :root {
+    /* Base Colors */
+    --p100: 255 248 245;
+    --p99: 241 255 254;
+    --p98: 255 248 245;
+    --p96: 211 251 204;
+    --p90: 160 240 240;
+    --p80: 132 212 211;
+    --p70: 104 184 184;
+    --p60: 76 157 157;
+    --p50: 46 131 131;
+    --p40: 0 106 106;
+    --p30: 0 79 79;
+    --p20: 0 55 55;
+    --p10: 0 32 32;
+    --s85: 192 217 218;
+    --s70: 161 173 174;
+    --s30: 62 73 74;
+    --s17: 33 44 45;
+    --s15: 28 39 40;
+    --s13: 25 36 36;
+    --s11: 21 31 32;
+    --s9: 17 27 28;
+    --s5: 15 18 2;
+
+    /* Brand Colors */
+    --brand-lighter: var(--p40);
+    --brand-main: var(--p30);
+    --brand-accent-1: var(--acc-ab40);
+    --brand-accent-2: var(--acc-ag40);
+
+    /* Surface Colors */
+    --surfaces-base: var(--p98);
+    --surfaces-l1: var(--p98);
+    --surfaces-l2: var(--p99);
+    --surfaces-l2a: var(--p96);
+    --surfaces-l3: var(--p100);
+    --surfaces-l4: var(--p100);
+    --surfaces-l5: var(--p100);
+    --surfaces-invert: var(--s5);
+
+    /* Action Colors */
+    --action-primary-default: var(--p40);
+    --action-primary-hover: var(--p40);
+    --action-primary-focus: var(--p40);
+    --action-primary-disabled: var(--s70);
+    --action-secondary-hover: var(--p98);
+    --action-secondary-default: var(--p98);
+    --action-neutral-default: var(--s5);
+    --action-neutral-disabled: var(--s5);
+    --action-neutral-fill: var(--p99);
+    /* --action-accent-green-default: var(--p99);
+    --action-accent-green-hover: var(--p99);
+    --action-accent-blue-default: var(--p99);
+    --action-accent-blue-hover: var(--p99); */
+
+    /* Text Colors */
+    --text-accent: var(--p40);
+    --text-max: var(--s5);
+    --text-high: var(--s5);
+    --text-medium: var(--s5);
+    --text-low: var(--s5);
+    --text-hi: var(--s5);
+    /* Add GradientText Colors */
+    --text-invert-accent: var(--p70);
+    --text-invert-high: var(--p98);
+    --text-invert-med: var(--p98);
+
+    /* Opacity Values */
+    --opacity-100: 1;
+    --opacity-90: 0.9;
+    --opacity-85: 0.85;
+    --opacity-87: 0.87;
+    --opacity-75: 0.75;
+    --opacity-50: 0.5;
+    --opacity-25: 0.25;
+    --opacity-15: 0.15;
+  }
+
+  /* Dark Mode */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      /* Base Colors */
+      --p100: 255 255 255;
+      --p99: 241 255 254;
+      --p98: 249 252 218;
+      --p96: 211 251 204;
+      --p90: 160 240 240;
+      --p80: 132 212 211;
+      --p70: 104 184 184;
+      --p60: 76 157 157;
+      --p50: 46 131 131;
+      --p40: 0 106 106;
+      --p30: 0 79 79;
+      --p20: 0 55 55;
+      --p10: 0 32 32;
+      --s98: 249 252 218;
+      --s85: 192 217 218;
+      --s70: 161 173 174;
+      --s30: 62 73 74;
+      --s17: 33 44 45;
+      --s15: 28 39 40;
+      --s13: 25 36 36;
+      --s11: 21 31 32;
+      --s9: 24 27 7;
+      --s5: 8 19 19;
+
+      /* Surface Colors - Dark Mode */
+      --surfaces-base: var(--s5);
+      --surfaces-l1: var(--s9);
+      --surfaces-l2: var(--s9);
+      --surfaces-l2a: var(--s11);
+      --surfaces-l3: var(--s13);
+      --surfaces-l4: var(--s15);
+      --surfaces-l5: var(--s20);
+      --surfaces-invert: var(--p95);
+
+      /* Action Colors - Dark Mode */
+      --action-primary-default: var(--p40);
+      --action-primary-disabled: var(--s30);
+      --action-secondary-default: var(--s15);
+      --action-neutral-default: var(--p95);
+      --action-neutral-disabled: var(--p95);
+      --action-neutral-fill: var(--s7);
+
+      /* Text Colors - Dark Mode */
+      --text-accent: var(--p95);
+      --text-primary: var(--p95);
+      --text-secondary: var(--p95);
+      --text-disabled: var(--p95);
+      --text-invert-accent: var(--s5);
+      --text-invert-primary: var(--s5);
+      --text-invert-secondary: var(--s5);
+      --text-invert-hi: var(--s98);
+      --text-hi: var(--s98);
+    }
+  }
+}

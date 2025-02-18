@@ -7,7 +7,7 @@
       rgba(0, 0, 0, 0) 15.39%,
       rgba(0, 0, 0, 0) 100%
     ),
-    url("src/assets/bg/base_2.png");
+    url("/assets/bg/base_2.png");
   background-size: cover;
   background-position: center;
 }

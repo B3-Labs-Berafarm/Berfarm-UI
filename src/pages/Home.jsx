@@ -42,7 +42,7 @@ export default function Home() {
                             playsInline
                             className='rounded-full transform scale-x-[-1] w-80 h-80 tab-s:w-[180px] tab-s:h-[180px] scr-s:w-[240px] scr-s:h-[240px] scr-m:w-[280px] scr-m:h-[280px] scr-l:w-[320px] scr-l:h-[320px]'
                         >
-                            <source src="/assets/video/panda.mp4" type="video/mp4" />
+                            <source src="/public/assets/video/panda.mp4" type="video/mp4" />
                             Your browser does not support the video tag.
                         </video>
                     </div>

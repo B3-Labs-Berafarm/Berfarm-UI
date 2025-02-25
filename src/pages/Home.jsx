@@ -11,7 +11,7 @@ export default function Home() {
             strings: [
                 "<p>Hello and welcome to Berafarm!</p> <p>We’re your one-stop farm for smart DeFi farming on the Berachain.</p><br /> <p>Follow our socials for updates. We will be launching soon!</p>"
             ],
-            typeSpeed: 100, // Speed of typing
+            typeSpeed: 50, // Speed of typing
             backSpeed: 30, // Speed of backspacing
             backDelay: 1000, // Delay before backspacing
             loop: true, // Loop the typing effect

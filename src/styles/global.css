@@ -6,55 +6,71 @@
 @layer base {
   :root {
     /* Base Colors */
-    --p100: 255 248 245;
-    --p99: 241 255 254;
+    /* Primary Base Color */
+    --p100: 255 255 255;
+    --p99: 255 251 255;
     --p98: 255 248 245;
-    --p96: 211 251 204;
-    --p90: 160 240 240;
-    --p80: 132 212 211;
-    --p70: 104 184 184;
-    --p60: 76 157 157;
-    --p50: 46 131 131;
-    --p40: 0 106 106;
-    --p30: 0 79 79;
-    --p20: 0 55 55;
-    --p10: 0 32 32;
-    --s85: 192 217 218;
-    --s70: 161 173 174;
-    --s30: 62 73 74;
-    --s17: 33 44 45;
-    --s15: 28 39 40;
-    --s13: 25 36 36;
-    --s11: 21 31 32;
-    --s9: 17 27 28;
+    --p96: 255 241 234;
+    --p90: 255 220 199;
+    --p80: 255 183 135;
+    --p70: 255 142 51;
+    --p60: 226 113 0;
+    --p50: 187 92 0;
+    --p40: 150 73 0;
+    --p30: 114 54 0;
+    --p20: 80 36 0;
+    --p10: 49 19 0;
+    /* Secondary Base Color */
+    --s98: 249 252 218;
+    /* --s85: 192 217 218; */
+    --s70: 170 174 143;
+    --s30: 69 73 49;
+    --s17: 40 44 22;
+    --s15: 36 39 18;
+    --s13: 32 35 14;
+    --s11: 28 31 11;
+    --s9: 24 27 7;
     --s5: 15 18 2;
-
+    /* Accent Colors*/
+    --a5: 25 15 0;
+    --a40: 123 88 0;
+    --a90: 255 222 164;
+    --a96: 255 242 226;
+    --b5: 17 18 0;
+    --b40: 95 98 0;
+    --b90: 229 232 135;
+    --b96: 247 244 228;
     /* Brand Colors */
     --brand-lighter: var(--p40);
-    --brand-main: var(--p30);
+    --brand-main: var(--p50);
     --brand-accent-1: var(--acc-ab40);
     --brand-accent-2: var(--acc-ag40);
 
     /* Surface Colors */
-    --surfaces-base: var(--p98);
+    --surfaces-accent1base: var(--s5);
+    --surfaces-accent2base: var(--s5);
+    --surfaces-base: var(--p96);
     --surfaces-l1: var(--p98);
-    --surfaces-l2: var(--p99);
+    --surfaces-l2: var(--p98);
     --surfaces-l2a: var(--p96);
-    --surfaces-l3: var(--p100);
-    --surfaces-l4: var(--p100);
-    --surfaces-l5: var(--p100);
+    --surfaces-l3: var(--p98);
+    --surfaces-l4: var(--p98);
+    --surfaces-l5: var(--p98);
     --surfaces-invert: var(--s5);
 
     /* Action Colors */
-    --action-primary-default: var(--p40);
-    --action-primary-hover: var(--p40);
-    --action-primary-focus: var(--p40);
+    --action-primary-default: var(--p60);
+    --action-primary-hover: var(--p98);
+    --action-primary-focus: var(--p98);
     --action-primary-disabled: var(--s70);
     --action-secondary-hover: var(--p98);
     --action-secondary-default: var(--p98);
     --action-neutral-default: var(--s5);
     --action-neutral-disabled: var(--s5);
     --action-neutral-fill: var(--p99);
+    --act-p-def: var(--p60);
+    --action-neutral: var(--s5);
+
     /* --action-accent-green-default: var(--p99);
     --action-accent-green-hover: var(--p99);
     --action-accent-blue-default: var(--p99);
@@ -67,6 +83,9 @@
     --text-medium: var(--s5);
     --text-low: var(--s5);
     --text-hi: var(--s5);
+    /* Border Color */
+    --border-light: var(--s5);
+    --border-def: var(--s5);
     /* Add GradientText Colors */
     --text-invert-accent: var(--p70);
     --text-invert-high: var(--p98);
@@ -92,7 +111,7 @@
       --p98: 249 252 218;
       --p96: 211 251 204;
       --p90: 160 240 240;
-      --p80: 132 212 211;
+      --p80: 255 183 135;
       --p70: 104 184 184;
       --p60: 76 157 157;
       --p50: 46 131 131;
@@ -114,7 +133,7 @@
       /* Surface Colors - Dark Mode */
       --surfaces-base: var(--s5);
       --surfaces-l1: var(--s9);
-      --surfaces-l2: var(--s9);
+      --surfaces-l2: var(--s11);
       --surfaces-l2a: var(--s11);
       --surfaces-l3: var(--s13);
       --surfaces-l4: var(--s15);
@@ -122,13 +141,16 @@
       --surfaces-invert: var(--p95);
 
       /* Action Colors - Dark Mode */
-      --action-primary-default: var(--p40);
+      --action-primary-default: var(--p80);
+      --action-primary-hover: var(--p98);
+      --action-primary-focus: var(--p98);
       --action-primary-disabled: var(--s30);
       --action-secondary-default: var(--s15);
       --action-neutral-default: var(--p95);
       --action-neutral-disabled: var(--p95);
       --action-neutral-fill: var(--s7);
-
+      --act-p-def: var(--p80);
+      --action-neutral: var(--p98);
       /* Text Colors - Dark Mode */
       --text-accent: var(--p95);
       --text-primary: var(--p95);
@@ -139,6 +161,9 @@
       --text-invert-secondary: var(--s5);
       --text-invert-hi: var(--s98);
       --text-hi: var(--s98);
+      --border-light: var(--s98);
+      --border-def: var(--s98);
+      --brand-main: var(--p80);
     }
   }
 }

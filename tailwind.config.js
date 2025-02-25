@@ -8,10 +8,20 @@ module.exports = {
   important: true,
   theme: {
     gridTemplateColumns: {
+      '1': 'repeat(1, 1fr)',
+      '2': 'repeat(2, 1fr)',
       '4': 'repeat(4, 1fr)', // 4 columns for smaller screens
       '6': 'repeat(6, 1fr)', // 6 columns for sm breakpoint
       '8': 'repeat(8, 1fr)', // 8 columns for md breakpoint
       '12': 'repeat(12, 1fr)', // 12 columns for lg breakpoint and up
+      '16': 'repeat(16, 1fr)', // 12 columns for lg breakpoint and up
+      '30': 'repeat(30, 1fr)',
+      // '30': 'repeat(30, minmax(0, 1fr))',
+    },
+    gridTemplateRows: {
+      // '10': 'repeat(10, minmax(0, 1fr))',
+      '10': 'repeat(10, 1fr)',
+      '16': 'repeat(16, 1fr)',
     },
     screens: {
       'mob-p': '250px',
@@ -41,6 +51,9 @@ module.exports = {
     fontFamily: {
       sans: ['Poppins', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', 'sans-serif'],
       poppins: ['Poppins', 'sans-serif'],
+      headings: ['Grandstander', 'sans-serif'],
+      titles: ['Grandstander', 'sans-serif'],
+      body: ['Shantell Sans', 'sans-serif'],
     },
     fontSize: {
       '7xl': ['54px', '64px'],
@@ -76,6 +89,7 @@ module.exports = {
     extend: {
       fontWeight: {
         'weight-400': 400,
+        'weight-800': 800,
       },
       lineHeight: {
         'l1': '12px',
@@ -157,6 +171,20 @@ module.exports = {
         128: '128px',
         160: '160px',
         200: '200px',
+        'g0': '0px',
+        'g0h': '4px',
+        'g1': '8px',
+        'g1h': '12px',
+        'g2': '16px',
+        'g2h': '20px',
+        'g3': '24px',
+        'g3h': '28px',
+        'g4': '32px',
+        'g4h': '36px',
+        'g5': '30px',
+        'g6': '48px',
+        'g10': '80px',
+
       },
       borderRadius: {
         6: '6px',
@@ -165,6 +193,7 @@ module.exports = {
         16: '16px',
         20: '20px',
         24: '24px',
+        'rnd-l': '32px'
       },
       boxShadow: {
         level1: [
@@ -203,6 +232,9 @@ module.exports = {
         'brand-main': 'rgb(var(--brand-main) / var(--opacity-100))',
         'brand-accent-1': 'rgb(var(--brand-accent-1) / var(--opacity-100))',
         'brand-accent-2': 'rgb(var(--brand-accent-2) / var(--opacity-100))',
+        'light': 'rgb(var(--border-light) / var(--opacity-15))',
+        'def': 'rgb(var(--border-light) / var(--opacity-25))',
+        'srf-base': 'rgb(var(--surfaces-base) / var(--opacity-100))',
         lvl0: 'rgb(var(--surfaces-base) / var(--opacity-100))',
         lvl1: 'rgb(var(--surfaces-l1) / var(--opacity-85))',
         lvl2: 'rgb(var(--surfaces-l2) / var(--opacity-85))',
@@ -212,9 +244,10 @@ module.exports = {
         lvl5: 'rgb(var(--surfaces-l5) / var(--opacity-85))',
         lvlinvert: 'rgb(var(--surfaces-invert) / var(--opacity-85))',
         level1: 'rgb(var(--surfaces-l1))',
+        "action-neutral": 'rgb(var(--action-neutral))',
         action: {
           primary: {
-            default: 'rgb(var(--action-primary-default) / var(--text-alpha-pure))',
+            default: 'rgb(var(--action-primary-default))',
             hover: 'rgb(var(--action-primary-hover) / var(--text-alpha-pure))',
             focus: 'rgb(var(--action-primary-focus) / var(--text-alpha-pure))',
             disabled: 'rgb(var(--action-primary-disabled) / var(--text-alpha-pure))',
@@ -237,6 +270,8 @@ module.exports = {
         medium: 'rgb(var(--text-medium) / var(--text-alpha-medium))',
         low: 'rgb(var(--text-low) / var(--text-alpha-low))',
         hi: 'rgb(var(--text-hi) / var(--opacity-90))',
+        "action-default": 'rgb(var(--action-primary-default))',
+        "action-neutral": 'rgb(var(--action-neutral))',
         invert: {
           accent: 'rgb(var(--text-invert-accent) / var(--text-alpha-invert-accent))',
           high: 'rgb(var(--text-invert-high) / var(--text-alpha-invert-high))',
@@ -391,26 +426,53 @@ module.exports = {
         '.body-t': {
           '@apply text-f1 leading-l1b font-weight-400': '',
         },
-        'h1': {
-          '@apply text-3xl font-bold': '',
-          '@media (min-width: 992px) and (max-width: 1919px)': {
-            '@apply text-5xl font-bold': '',
-          },
-          '@media (min-width: 1920px)': {
-            '@apply text-6xl font-bold': '',
-            letterSpacing: '-0.25px',
-          },
+        '.title-s': {
+          '@apply text-f4 mob-l:text-f5 scr-l:text-f6': '',
         },
-
-        'h2': {
-          '@apply text-2xl font-bold': '',
-          '@media (min-width: 992px) and (max-width: 1919px)': {
-            '@apply text-4xl font-bold': '',
-          },
-          '@media (min-width: 1920px)': {
-            '@apply text-5xl font-bold': '',
-          },
+        '.gap-default': {
+          '@apply gap-16 tab-s:gap-24 scr-l:gap-32': '',
         },
+        '.h1': {
+          '@apply text-f8 mob-p:text-f6 mob-l:text-f8 tab-s:text-f9 scr-s:text-f10 scr-l:text-f11': '',
+        },
+        '.h2': {
+          '@apply text-f7 mob-p:text-f5 mob-l:text-f7 tab-s:text-f8 scr-s:text-f9 scr-l:text-f10': '',
+        },
+        '.h3': {
+          '@apply text-f6 mob-p:text-f5 mob-l:text-f6 tab-s:text-f7 scr-s:text-f8 scr-l:text-f9': '',
+        },
+        '.px-l': {
+          '@apply px-g4': '',
+        },
+        '.py-l': {
+          '@apply py-g5': '',
+        },
+        // 'h1': {
+        //   '@apply text-3xl font-bold': '',
+        //   '@media (min-width: 992px) and (max-width: 1919px)': {
+        //     '@apply text-5xl font-bold': '',
+        //   },
+        //   '@media (min-width: 1920px)': {
+        //     '@apply text-6xl font-bold': '',
+        //     letterSpacing: '-0.25px',
+        //   },
+        // },
+        // 'mob-p': '250px',
+        // 'mob-l': '480px',
+        // 'tab-s': '768px',
+        // 'tab-l': '992px',
+        // 'scr-s': '1280px',
+        // 'scr-m': '1440px',
+        // 'scr-l': '1920px',
+        // 'h2': {
+        //   '@apply text-2xl font-bold': '',
+        //   '@media (min-width: 992px) and (max-width: 1919px)': {
+        //     '@apply text-4xl font-bold': '',
+        //   },
+        //   '@media (min-width: 1920px)': {
+        //     '@apply text-5xl font-bold': '',
+        //   },
+        // },
 
         'h3': {
           '@apply text-xl font-semibold': '',

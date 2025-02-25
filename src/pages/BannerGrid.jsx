@@ -5,14 +5,23 @@ const BannerGrid = () => {
     const [hoveredArea, setHoveredArea] = useState(null);
     const [imageUrl, setImageUrl] = useState("/assets/abc/0 Main UI - Fallback.webp");
     const updateImageUrl = () => {
-        if (window.innerWidth >= 1024) {
+        console.log("HII", window.innerWidth, window.innerHeight)
+        const aspectRatio = window.innerWidth / window.innerHeight;
+        console.log({ aspectRatio })
+        if (aspectRatio >= 1.6) {
             setImageUrl("/assets/abc/0 Main UI - Fallback.webp");
-        } else if (window.innerWidth >= 768) {
-            setImageUrl("/assets/abc/1 Main UI - Base Portrait.webp");
         } else {
-            setImageUrl("/assets/abc/1 Main UI - Base Portrait.webp");
+            setImageUrl("/assets/abc/0 Main UI - Fallback Portrait.webp");
         }
+        // if (window.innerWidth >= 1024) {
+        //     setImageUrl("/assets/abc/0 Main UI - Fallback.webp");
+        // } else if (window.innerWidth >= 768) {
+        //     setImageUrl("/assets/abc/1 Main UI - Base Portrait.webp");
+        // } else {
+        //     setImageUrl("/assets/abc/1 Main UI - Base Portrait.webp");
+        // }
     };
+
 
     useEffect(() => {
         // Update the image URL when the component is mounted or resized
@@ -68,18 +77,41 @@ const BannerGrid = () => {
                 <img
                     src={imageUrl}
                     alt="Village Banner"
-                    className="w-full h-full object-cover" />
+                    className="w-full h-full object-contain" />
 
                 {/* Grid overlay for hover areas */}
-                <div className="absolute inset-0 grid grid-cols-16 grid-rows-16  scr-m:grid-cols-30 scr-m:grid-rows-10  border-x-4 border-black">
-                    {areas.map((area) => (
-                        <div
-                            key={area.id}
-                            className={`${area.gridArea} relative cursor-pointer ${area.className} border border-black`}
-                            onMouseEnter={() => setHoveredArea(area.id)}
+                <div className="absolute inset-0">
+
+                    {
+
+
+                        < div
+                            key={areas[0].id}
+                            className={`relative cursor-pointer ${areas[0].className}`}
+                            onMouseEnter={() => setHoveredArea(areas[0].id)}
                             onMouseLeave={() => setHoveredArea(null)}
                         >
                             {/* Light effect overlay */}
+                            <div
+                                className={` h-[60vh] w-[80vh] border-2 border-black absolute inset-0 transition-opacity duration-300 left-[calc(50%-10vh)] -translate-x-1/2 ${hoveredArea === areas[0].id ? 'opacity-100' : 'opacity-100'}`}
+                            >
+                                <img
+                                    src={areas[0].lightImage}
+                                    alt={`${areas[0].name} highlight`}
+                                    className="w-full h-full object-contain" />
+                            </div>
+                        </div>
+
+
+                    }
+                    {/* {areas.map((area) => (
+                        <div
+                            key={area.id}
+                            className={`relative cursor-pointer ${area.className}`}
+                            onMouseEnter={() => setHoveredArea(area.id)}
+                            onMouseLeave={() => setHoveredArea(null)}
+                        >
+                            
                             <div
                                 className={`absolute inset-0 transition-opacity duration-300 ${hoveredArea === area.id ? 'opacity-100' : 'opacity-0'}`}
                             >
@@ -89,10 +121,10 @@ const BannerGrid = () => {
                                     className="w-full h-full object-contain" />
                             </div>
                         </div>
-                    ))}
+                    ))} */}
                 </div>
             </div>
-        </div><Navbar /></>
+        </div > <Navbar /></>
     );
 };
 

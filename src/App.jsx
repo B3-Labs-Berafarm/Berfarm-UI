@@ -9,12 +9,14 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    // <div className="bg-image-gradient h-screen">
+    <div className="bg-image-gradient h-screen" >
 
-    // <MyFarms />
-    // </div>
-    // <Test />
-    <BannerGrid />
+      {/* <MyFarms /> */}
+
+      {/* <Test /> */}
+      <Home />
+      {/* <BannerGrid /> */}
+    </div>
   )
 }
 

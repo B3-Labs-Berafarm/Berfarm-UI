@@ -71,7 +71,8 @@ const BannerGrid = () => {
     ];
 
     return (
-        <><div className="relative w-full">
+        <>
+        <div className="relative w-full">
             {/* Base banner image */}
             <div className="relative w-full h-[100vh] aspect-[3/1] ">
                 <img

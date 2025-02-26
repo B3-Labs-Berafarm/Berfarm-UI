@@ -84,7 +84,39 @@ module.exports = {
       f13: '69px',
       f14: '81px',
       f15: '96px',
-
+      'fd15': ['96px', '112px'],  // 1.2x leading for Display
+      'fd14': ['81px', '88px'],
+      'fd13': ['69px', '76px'],
+      'fd12': ['57px', '64px'],
+      'fd11': ['48px', '52px'],
+      'fd10': ['42px', '48px'],
+      'fd9': ['36px', '40px'],
+      'fd8': ['30px', '36px'],
+      'fd7': ['24px', '28px'],
+      'fd6': ['21px', '24px'],
+      'fd5': ['18px', '20px'],
+      'ft15': ['96px', '128px'],  // 1.33x leading for Titles
+      'ft14': ['81px', '108px'],
+      'ft13': ['69px', '92px'],
+      'ft12': ['57px', '76px'],
+      'ft11': ['48px', '64px'],
+      'ft10': ['42px', '56px'],
+      'ft9': ['36px', '48px'],
+      'ft8': ['30px', '40px'],
+      'ft7': ['24px', '32px'],
+      'ft6': ['21px', '28px'],
+      'ft5': ['18px', '24px'],
+      'ft4': ['15px', '20px'],
+      'ft3': ['12px', '16px'],
+      'ft2': ['10.5px', '16px'],
+      'ft1': ['9px', '12px'],
+      'fb7': ['24px', '36px'],  // 1.5x leading for Body
+      'fb6': ['21px', '32px'],
+      'fb5': ['18px', '28px'],
+      'fb4': ['15px', '24px'],
+      'fb3': ['12px', '20px'],
+      'fb2': ['10.5px', '16px'],
+      'fb1': ['9px', '12px'],
     },
     extend: {
       fontWeight: {
@@ -197,9 +229,9 @@ module.exports = {
       },
       boxShadow: {
         level1: [
-          '0px 1px 6px 0px rgba(20, 10, 51, 0.07)',
-          '0px 2px 2px 0px rgba(20, 10, 51, 0.03)',
-          '0px 1px 2px 0px rgba(20, 10, 51, 0.05)',
+          '0px 4px 10px 0px rgba(15, 18, 2, 0.09)',
+          '0px 1px 20px 0px rgba(15, 18, 2, 0.06)',
+          '0px 2px 8px 0px rgba(15, 18, 2, 0.12)',
         ],
         level2: [
           '0px 4px 10px 0px rgba(20, 10, 51, 0.05)',
@@ -248,7 +280,7 @@ module.exports = {
         action: {
           primary: {
             default: 'rgb(var(--action-primary-default))',
-            hover: 'rgb(var(--action-primary-hover) / var(--text-alpha-pure))',
+            hover: 'rgb(var(--action-primary-hover))',
             focus: 'rgb(var(--action-primary-focus) / var(--text-alpha-pure))',
             disabled: 'rgb(var(--action-primary-disabled) / var(--text-alpha-pure))',
           },
@@ -272,6 +304,7 @@ module.exports = {
         hi: 'rgb(var(--text-hi) / var(--opacity-90))',
         "action-default": 'rgb(var(--action-primary-default))',
         "action-neutral": 'rgb(var(--action-neutral))',
+        "med": 'rgb(var(--surfaces-accent1base)/ var(--opacity-72))',
         invert: {
           accent: 'rgb(var(--text-invert-accent) / var(--text-alpha-invert-accent))',
           high: 'rgb(var(--text-invert-high) / var(--text-alpha-invert-high))',
@@ -413,6 +446,12 @@ module.exports = {
             '@apply text-7xl font-bold': '',
             letterSpacing: '-0.5px',
           },
+        },
+        '.body-dg': {
+          '@apply text-fb4 tab-s:text-fb5 tab-l:text-fb5 scr-s:text-fb5 scr-m:text-fb7 scr-l:text-ft8 font-weight-400': '',
+        },
+        '.body-dg': {
+          '@apply text-fb4 tab-s:text-fb5 tab-l:text-fb5 scr-s:text-fb5 scr-m:text-fb7 scr-l:text-ft8 font-weight-400': '',
         },
         '.body-l': {
           '@apply text-f5 leading-l5b scr-l:text-f10 scr-l:leading-l10 font-weight-400': '',

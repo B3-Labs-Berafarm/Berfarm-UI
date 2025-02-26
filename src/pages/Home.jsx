@@ -2,6 +2,17 @@ import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Typed from 'typed.js';
 
+const IconWithBackground = ({ children, link }) => {
+    return (
+        <div className="flex justify-center items-center bg-action-primary-default hover:bg-action-primary-hover rounded-full shadow-level1 backdrop-blur-[1.5px]- cursor-pointer h-40 w-40">
+            <a href={link} target='blank'>
+                {children}
+            </a>
+        </div>
+    );
+};
+
+
 export default function Home() {
     // Create reference to store the DOM element containing the animation
     const [hoveredArea, setHoveredArea] = useState(null);
@@ -35,7 +46,7 @@ export default function Home() {
     useEffect(() => {
         const options = {
             strings: [
-                "<p>Hello and welcome to Berafarm!</p> <p>We’re your one-stop farm for smart DeFi farming on the Berachain.</p><br /> <p>Follow our socials for updates. We will be launching soon!</p>"
+                "<p>Henlo Beras and furthermore Ooga Booga!</p><p>Welcome to Berafarm, a magical farm where beras earn superior yields!</p><p>Beta launching soon! Keep your paws ready and eyes on our socials for the announcement.</p>"
             ],
             typeSpeed: 50, // Speed of typing
             backSpeed: 30, // Speed of backspacing
@@ -59,27 +70,43 @@ export default function Home() {
                 <img
                     src={imageUrl}
                     alt="Village Banner"
-                    className="w-full h-full object-cover object-center" />
+                    className="w-full h-full object-cover object-center"
+                    loading="lazy"
+                />
                 <div className="absolute inset-0 bg-image-gradient"></div>
 
                 <Navbar />
                 <div className="absolute left-0 bottom-0 mx-auto px-24 tab-s:px-44 tab-l:px-64 scr-s:px-76 scr-m:px-108 scr-l:px-160 my-24 mob-l:my-48">
-                    <div className='flex justify-center items-center gap-32'>
+                    <div className='flex justify-center tab-s:items-end gap-default tab-s:gap-32 flex-col-reverse tab-s:flex-row'>
                         <div className='h-full'>
                             <video
                                 autoPlay
                                 muted
                                 loop
                                 playsInline
-                                className='rounded-full transform scale-x-[-1] w-80 h-80 tab-s:w-[180px] tab-s:h-[180px] scr-s:w-[240px] scr-s:h-[240px] scr-m:w-[280px] scr-m:h-[280px] scr-l:w-[320px] scr-l:h-[320px]'
+                                className='rounded-full object-cover transform w-80 h-80 tab-s:w-[160px] tab-s:h-[160px] tab-l:w-[216px] tab-l:h-[216px] scr-s:w-[264px] scr-s:h-[264px] scr-m:w-[288px] scr-m:h-[288px] scr-l:w-[376px] scr-l:h-[376px]'
+                                loading="lazy"
                             >
-                                <source src="/public/assets/video/panda.mp4" type="video/mp4" />
+                                <source src="/assets/panda/Talking Bera RF40 HD.mp4" type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>
                         </div>
-                        <div className='bg-level1 flex flex-col justify-start items-center rounded-[32px] scr-s:rounded-[72px] w-[240px] h-[112px] mob-l:w-[320px] mob-l:h-[112px] tab-s:w-[240px] tab-s:h-[172px]  tab-l:w-[400px] tab-l:h-[132px] scr-s:w-[480px] scr-s:h-[208px] scr-m:w-[560px] scr-m:h-[232px] scr-l:w-[1008px] scr-l:h-[400px] px-24 scr-s:px-48 py-16 scr-s:py-32'>
-                            <p className="typed-text text-hi text-left w-full body-t tab-s:body-s scr-s:body-m scr-m:body-l" style={{ fontFamily: '"Shantell Sans", serif' }}></p>
+                        <div className='bg-level1 flex flex-col justify-start items-center rounded-[32px] scr-s:rounded-[48px] w-[300px] h-[240px] mob-l:w-[352px] mob-l:h-[232px] tab-s:w-[320px] tab-s:h-[316px]  tab-l:w-[450px] tab-l:h-[220px] scr-s:w-[648px] scr-s:h-[200px] scr-m:w-[600px] scr-m:h-[312px] scr-l:w-[784px] scr-l:h-[280px] px-24 scr-s:px-48 py-24 scr-s:py-32 scr-l:p-40'>
+                            <p className="typed-text text-hi text-left w-full body-dg font-body"></p>
                         </div>
+                    </div>
+                </div>
+                <div className="absolute tab-s:right-[76px] tab-s:bottom-[60px] hidden tab-s:block">
+                    <div className='flex items-center gap-g1'>
+                        <IconWithBackground link="https://x.com/realBeraFarm">
+                            <img src='./assets/x.png' className="w-24 h-24" />
+                        </IconWithBackground>
+                        <IconWithBackground link="https://t.me/+VKpnp8CAsPFhOGFk">
+                            <img src='./assets/telegram.png' className="w-[20px] h-[18px]" />
+                        </IconWithBackground>
+                        <IconWithBackground link="https://discord.gg/4MaTYru9">
+                            <img src='./assets/discord.png' className="w-24 h-24" />
+                        </IconWithBackground>
                     </div>
                 </div>
             </div ></>

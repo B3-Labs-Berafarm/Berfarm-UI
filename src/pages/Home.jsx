@@ -4,7 +4,7 @@ import Typed from 'typed.js';
 
 const IconWithBackground = ({ children, link }) => {
     return (
-        <div className="flex justify-center items-center bg-action-primary-default hover:bg-action-primary-hover rounded-full shadow-level1 backdrop-blur-[1.5px]- cursor-pointer h-40 w-40">
+        <div className="flex justify-center items-center bg-action-primary-default hover:bg-action-primary-hover rounded-full shadow-level1 backdrop-blur-[1.5px]- cursor-pointer h-[36px] w-[36px] tab-s:h-40 tab-s:w-40">
             <a href={link} target='blank'>
                 {children}
             </a>
@@ -76,7 +76,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-image-gradient"></div>
 
                 <Navbar />
-                <div className="absolute left-0 bottom-0 mx-auto px-24 tab-s:px-44 tab-l:px-64 scr-s:px-76 scr-m:px-108 scr-l:px-160 my-24 mob-l:my-48">
+                <div className="absolute left-0 bottom-0 mx-auto px-24 tab-s:px-44 tab-l:px-64 scr-s:px-76 scr-m:px-76 scr-l:px-76 my-24 mob-l:my-48">
                     <div className='flex justify-center tab-s:items-end gap-default tab-s:gap-32 flex-col-reverse tab-s:flex-row'>
                         <div className='h-full'>
                             <video
@@ -96,7 +96,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <div className="absolute tab-s:right-[76px] tab-s:bottom-[60px] hidden tab-s:block">
+                <div className="absolute right-[24px] bottom-[36px] tab-s:right-[76px] tab-s:bottom-[60px]">
                     <div className='flex items-center gap-g1'>
                         <IconWithBackground link="https://x.com/realBeraFarm">
                             <img src='./assets/x.png' className="w-24 h-24" />

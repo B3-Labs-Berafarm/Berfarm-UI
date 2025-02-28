@@ -41,7 +41,7 @@ function NavbarLargerScreen() {
                 ${isScrolled ? 'bg-srf-base shadow-lg' : 'bg-transparent'}
                 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
         >
-            <div className="mx-auto px-24 tab-s:px-44 tab-l:px-64 scr-s:px-76 scr-m:px-108 scr-l:px-160 py-[40px]">
+            <div className="mx-auto px-24 tab-s:px-44 tab-l:px-64 scr-s:px-76 scr-m:px-76 scr-l:px-76 py-[40px]">
                 <div className="flex justify-between items-center text-brand-main">
                     <a href="/">
                         <svg width="312" height="60" viewBox="0 0 312 60" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

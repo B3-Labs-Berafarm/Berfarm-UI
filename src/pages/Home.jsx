@@ -46,10 +46,10 @@ export default function Home() {
     useEffect(() => {
         const options = {
             strings: [
-                "<p>Henlo Beras and furthermore Ooga Booga!</p><p>Welcome to Berafarm, a magical farm where beras earn superior yields!</p><p>Beta launching soon! Keep your paws ready and eyes on our socials for the announcement.</p>"
+                "<p class='mb-6'>Henlo Beras!</p><p class='mb-6'>Welcome to Berafarm &#x1F43B;&#x1F33E;, a magical farm where beras earn superior yields!</p><p class='mb-12'>Keep your paws ready and eyes on our socials <span class='text-action-primary-default'>we are launching soon!</span></p>"
             ],
-            typeSpeed: 50, // Speed of typing
-            backSpeed: 30, // Speed of backspacing
+            typeSpeed: 30, // Speed of typing
+            backSpeed: 10, // Speed of backspacing
             backDelay: 1000, // Delay before backspacing
             loop: true, // Loop the typing effect
             showCursor: false, // Ensure cursor is shown
@@ -101,7 +101,7 @@ export default function Home() {
                         <IconWithBackground link="https://x.com/realBeraFarm">
                             <img src='./assets/x.png' className="w-24 h-24" />
                         </IconWithBackground>
-                        <IconWithBackground link="https://t.me/+VKpnp8CAsPFhOGFk">
+                        <IconWithBackground link="https://t.me/realBeraFarm">
                             <img src='./assets/telegram.png' className="w-[20px] h-[18px]" />
                         </IconWithBackground>
                         <IconWithBackground link="https://discord.gg/4MaTYru9">

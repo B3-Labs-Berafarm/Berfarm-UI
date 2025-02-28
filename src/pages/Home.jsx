@@ -91,7 +91,7 @@ export default function Home() {
                                 Your browser does not support the video tag.
                             </video>
                         </div>
-                        <div className='bg-level1 flex flex-col justify-start items-center rounded-[32px] scr-s:rounded-[48px] w-[300px] h-[240px] mob-l:w-[352px] mob-l:h-[232px] tab-s:w-[320px] tab-s:h-[316px]  tab-l:w-[450px] tab-l:h-[220px] scr-s:w-[648px] scr-s:h-[200px] scr-m:w-[600px] scr-m:h-[312px] scr-l:w-[784px] scr-l:h-[280px] px-24 scr-s:px-48 py-24 scr-s:py-32 scr-l:p-40'>
+                        <div className='bg-level1 flex flex-col justify-start items-center rounded-[32px] scr-s:rounded-[48px] w-[calc(100vw-48px)] h-[240px] mob-l:w-[calc(100vw-48px)] mob-l:h-[232px] tab-s:w-[320px] tab-s:h-[316px]  tab-l:w-[450px] tab-l:h-[220px] scr-s:w-[648px] scr-s:h-[200px] scr-m:w-[600px] scr-m:h-[312px] scr-l:w-[784px] scr-l:h-[330px] px-24 scr-s:px-48 py-24 scr-s:py-32 scr-l:p-40'>
                             <p className="typed-text text-hi text-left w-full body-dg font-body"></p>
                         </div>
                     </div>

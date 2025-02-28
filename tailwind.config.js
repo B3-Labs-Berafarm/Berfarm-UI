@@ -8,10 +8,20 @@ module.exports = {
   important: true,
   theme: {
     gridTemplateColumns: {
+      '1': 'repeat(1, 1fr)',
+      '2': 'repeat(2, 1fr)',
       '4': 'repeat(4, 1fr)', // 4 columns for smaller screens
       '6': 'repeat(6, 1fr)', // 6 columns for sm breakpoint
       '8': 'repeat(8, 1fr)', // 8 columns for md breakpoint
       '12': 'repeat(12, 1fr)', // 12 columns for lg breakpoint and up
+      '16': 'repeat(16, 1fr)', // 12 columns for lg breakpoint and up
+      '30': 'repeat(30, 1fr)',
+      // '30': 'repeat(30, minmax(0, 1fr))',
+    },
+    gridTemplateRows: {
+      // '10': 'repeat(10, minmax(0, 1fr))',
+      '10': 'repeat(10, 1fr)',
+      '16': 'repeat(16, 1fr)',
     },
     screens: {
       'mob-p': '250px',
@@ -41,6 +51,9 @@ module.exports = {
     fontFamily: {
       sans: ['Poppins', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', 'sans-serif'],
       poppins: ['Poppins', 'sans-serif'],
+      headings: ['Grandstander', 'sans-serif'],
+      titles: ['Grandstander', 'sans-serif'],
+      body: ['Shantell Sans', 'sans-serif'],
     },
     fontSize: {
       '7xl': ['54px', '64px'],
@@ -71,11 +84,44 @@ module.exports = {
       f13: '69px',
       f14: '81px',
       f15: '96px',
-
+      'fd15': ['96px', '112px'],  // 1.2x leading for Display
+      'fd14': ['81px', '88px'],
+      'fd13': ['69px', '76px'],
+      'fd12': ['57px', '64px'],
+      'fd11': ['48px', '52px'],
+      'fd10': ['42px', '48px'],
+      'fd9': ['36px', '40px'],
+      'fd8': ['30px', '36px'],
+      'fd7': ['24px', '28px'],
+      'fd6': ['21px', '24px'],
+      'fd5': ['18px', '20px'],
+      'ft15': ['96px', '128px'],  // 1.33x leading for Titles
+      'ft14': ['81px', '108px'],
+      'ft13': ['69px', '92px'],
+      'ft12': ['57px', '76px'],
+      'ft11': ['48px', '64px'],
+      'ft10': ['42px', '56px'],
+      'ft9': ['36px', '48px'],
+      'ft8': ['30px', '40px'],
+      'ft7': ['24px', '32px'],
+      'ft6': ['21px', '28px'],
+      'ft5': ['18px', '24px'],
+      'ft4': ['15px', '20px'],
+      'ft3': ['12px', '16px'],
+      'ft2': ['10.5px', '16px'],
+      'ft1': ['9px', '12px'],
+      'fb7': ['24px', '36px'],  // 1.5x leading for Body
+      'fb6': ['21px', '32px'],
+      'fb5': ['18px', '28px'],
+      'fb4': ['15px', '24px'],
+      'fb3': ['12px', '20px'],
+      'fb2': ['10.5px', '16px'],
+      'fb1': ['9px', '12px'],
     },
     extend: {
       fontWeight: {
         'weight-400': 400,
+        'weight-800': 800,
       },
       lineHeight: {
         'l1': '12px',
@@ -157,6 +203,20 @@ module.exports = {
         128: '128px',
         160: '160px',
         200: '200px',
+        'g0': '0px',
+        'g0h': '4px',
+        'g1': '8px',
+        'g1h': '12px',
+        'g2': '16px',
+        'g2h': '20px',
+        'g3': '24px',
+        'g3h': '28px',
+        'g4': '32px',
+        'g4h': '36px',
+        'g5': '30px',
+        'g6': '48px',
+        'g10': '80px',
+
       },
       borderRadius: {
         6: '6px',
@@ -165,12 +225,13 @@ module.exports = {
         16: '16px',
         20: '20px',
         24: '24px',
+        'rnd-l': '32px'
       },
       boxShadow: {
         level1: [
-          '0px 1px 6px 0px rgba(20, 10, 51, 0.07)',
-          '0px 2px 2px 0px rgba(20, 10, 51, 0.03)',
-          '0px 1px 2px 0px rgba(20, 10, 51, 0.05)',
+          '0px 4px 10px 0px rgba(15, 18, 2, 0.09)',
+          '0px 1px 20px 0px rgba(15, 18, 2, 0.06)',
+          '0px 2px 8px 0px rgba(15, 18, 2, 0.12)',
         ],
         level2: [
           '0px 4px 10px 0px rgba(20, 10, 51, 0.05)',
@@ -203,6 +264,9 @@ module.exports = {
         'brand-main': 'rgb(var(--brand-main) / var(--opacity-100))',
         'brand-accent-1': 'rgb(var(--brand-accent-1) / var(--opacity-100))',
         'brand-accent-2': 'rgb(var(--brand-accent-2) / var(--opacity-100))',
+        'light': 'rgb(var(--border-light) / var(--opacity-15))',
+        'def': 'rgb(var(--border-light) / var(--opacity-25))',
+        'srf-base': 'rgb(var(--surfaces-base) / var(--opacity-100))',
         lvl0: 'rgb(var(--surfaces-base) / var(--opacity-100))',
         lvl1: 'rgb(var(--surfaces-l1) / var(--opacity-85))',
         lvl2: 'rgb(var(--surfaces-l2) / var(--opacity-85))',
@@ -212,10 +276,11 @@ module.exports = {
         lvl5: 'rgb(var(--surfaces-l5) / var(--opacity-85))',
         lvlinvert: 'rgb(var(--surfaces-invert) / var(--opacity-85))',
         level1: 'rgb(var(--surfaces-l1))',
+        "action-neutral": 'rgb(var(--action-neutral))',
         action: {
           primary: {
-            default: 'rgb(var(--action-primary-default) / var(--text-alpha-pure))',
-            hover: 'rgb(var(--action-primary-hover) / var(--text-alpha-pure))',
+            default: 'rgb(var(--action-primary-default))',
+            hover: 'rgb(var(--action-primary-hover))',
             focus: 'rgb(var(--action-primary-focus) / var(--text-alpha-pure))',
             disabled: 'rgb(var(--action-primary-disabled) / var(--text-alpha-pure))',
           },
@@ -237,6 +302,9 @@ module.exports = {
         medium: 'rgb(var(--text-medium) / var(--text-alpha-medium))',
         low: 'rgb(var(--text-low) / var(--text-alpha-low))',
         hi: 'rgb(var(--text-hi) / var(--opacity-90))',
+        "action-default": 'rgb(var(--action-primary-default))',
+        "action-neutral": 'rgb(var(--action-neutral))',
+        "med": 'rgb(var(--surfaces-accent1base)/ var(--opacity-72))',
         invert: {
           accent: 'rgb(var(--text-invert-accent) / var(--text-alpha-invert-accent))',
           high: 'rgb(var(--text-invert-high) / var(--text-alpha-invert-high))',
@@ -379,6 +447,12 @@ module.exports = {
             letterSpacing: '-0.5px',
           },
         },
+        '.body-dg': {
+          '@apply text-fb4 tab-s:text-fb5 tab-l:text-fb5 scr-s:text-fb5 scr-m:text-fb7 scr-l:text-ft8 font-weight-400': '',
+        },
+        '.body-dg': {
+          '@apply text-fb4 tab-s:text-fb5 tab-l:text-fb5 scr-s:text-fb5 scr-m:text-fb7 scr-l:text-ft8 font-weight-400': '',
+        },
         '.body-l': {
           '@apply text-f5 leading-l5b scr-l:text-f10 scr-l:leading-l10 font-weight-400': '',
         },
@@ -391,26 +465,53 @@ module.exports = {
         '.body-t': {
           '@apply text-f1 leading-l1b font-weight-400': '',
         },
-        'h1': {
-          '@apply text-3xl font-bold': '',
-          '@media (min-width: 992px) and (max-width: 1919px)': {
-            '@apply text-5xl font-bold': '',
-          },
-          '@media (min-width: 1920px)': {
-            '@apply text-6xl font-bold': '',
-            letterSpacing: '-0.25px',
-          },
+        '.title-s': {
+          '@apply text-f4 mob-l:text-f5 scr-l:text-f6': '',
         },
-
-        'h2': {
-          '@apply text-2xl font-bold': '',
-          '@media (min-width: 992px) and (max-width: 1919px)': {
-            '@apply text-4xl font-bold': '',
-          },
-          '@media (min-width: 1920px)': {
-            '@apply text-5xl font-bold': '',
-          },
+        '.gap-default': {
+          '@apply gap-16 tab-s:gap-24 scr-l:gap-32': '',
         },
+        '.h1': {
+          '@apply text-f8 mob-p:text-f6 mob-l:text-f8 tab-s:text-f9 scr-s:text-f10 scr-l:text-f11': '',
+        },
+        '.h2': {
+          '@apply text-f7 mob-p:text-f5 mob-l:text-f7 tab-s:text-f8 scr-s:text-f9 scr-l:text-f10': '',
+        },
+        '.h3': {
+          '@apply text-f6 mob-p:text-f5 mob-l:text-f6 tab-s:text-f7 scr-s:text-f8 scr-l:text-f9': '',
+        },
+        '.px-l': {
+          '@apply px-g4': '',
+        },
+        '.py-l': {
+          '@apply py-g5': '',
+        },
+        // 'h1': {
+        //   '@apply text-3xl font-bold': '',
+        //   '@media (min-width: 992px) and (max-width: 1919px)': {
+        //     '@apply text-5xl font-bold': '',
+        //   },
+        //   '@media (min-width: 1920px)': {
+        //     '@apply text-6xl font-bold': '',
+        //     letterSpacing: '-0.25px',
+        //   },
+        // },
+        // 'mob-p': '250px',
+        // 'mob-l': '480px',
+        // 'tab-s': '768px',
+        // 'tab-l': '992px',
+        // 'scr-s': '1280px',
+        // 'scr-m': '1440px',
+        // 'scr-l': '1920px',
+        // 'h2': {
+        //   '@apply text-2xl font-bold': '',
+        //   '@media (min-width: 992px) and (max-width: 1919px)': {
+        //     '@apply text-4xl font-bold': '',
+        //   },
+        //   '@media (min-width: 1920px)': {
+        //     '@apply text-5xl font-bold': '',
+        //   },
+        // },
 
         'h3': {
           '@apply text-xl font-semibold': '',

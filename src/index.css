@@ -23,3 +23,8 @@
 /* url("/assets/bg/base_2.png");
   background-size: cover;
   background-position: center; */
+
+td {
+  height: 100%;
+  vertical-align: middle; /* Ensures the content is centered vertically */
+}

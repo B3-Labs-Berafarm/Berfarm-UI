@@ -10,6 +10,7 @@ module.exports = {
     gridTemplateColumns: {
       '1': 'repeat(1, 1fr)',
       '2': 'repeat(2, 1fr)',
+      '3': 'repeat(3, 1fr)',
       '4': 'repeat(4, 1fr)', // 4 columns for smaller screens
       '6': 'repeat(6, 1fr)', // 6 columns for sm breakpoint
       '8': 'repeat(8, 1fr)', // 8 columns for md breakpoint
@@ -122,6 +123,9 @@ module.exports = {
       fontWeight: {
         'weight-400': 400,
         'weight-800': 800,
+        'weight-700': 700,
+        'weight-600': 600,
+        'weight-500': 500
       },
       lineHeight: {
         'l1': '12px',
@@ -225,7 +229,9 @@ module.exports = {
         16: '16px',
         20: '20px',
         24: '24px',
-        'rnd-l': '32px'
+        'rnd-l': '32px',
+        'rnd-m': '24px',
+        'rnd-s': '16px'
       },
       boxShadow: {
         level1: [
@@ -234,9 +240,9 @@ module.exports = {
           '0px 2px 8px 0px rgba(15, 18, 2, 0.12)',
         ],
         level2: [
-          '0px 4px 10px 0px rgba(20, 10, 51, 0.05)',
-          '0px 1px 20px 0px rgba(20, 10, 51, 0.03)',
-          '0px 2px 8px 0px rgba(20, 10, 51, 0.07)',
+          '0px 6px 20px 0px rgba(20, 10, 51, 0.09)',
+          '0px 1px 36px 0px rgba(15, 18, 2, 0.06)',
+          '0px 3px 10px 0px rgba(15, 18, 2, 0.12)',
         ],
         level3: [
           '0px 6px 20px 0px rgba(20, 10, 51, 0.05)',
@@ -267,6 +273,7 @@ module.exports = {
         'light': 'rgb(var(--border-light) / var(--opacity-15))',
         'def': 'rgb(var(--border-light) / var(--opacity-25))',
         'srf-base': 'rgb(var(--surfaces-base) / var(--opacity-100))',
+        'mean-inv-suc': 'rgb(var(--mean-inv-suc) / var(--opacity-96))',
         lvl0: 'rgb(var(--surfaces-base) / var(--opacity-100))',
         lvl1: 'rgb(var(--surfaces-l1) / var(--opacity-85))',
         lvl2: 'rgb(var(--surfaces-l2) / var(--opacity-85))',
@@ -277,6 +284,28 @@ module.exports = {
         lvlinvert: 'rgb(var(--surfaces-invert) / var(--opacity-85))',
         level1: 'rgb(var(--surfaces-l1))',
         "action-neutral": 'rgb(var(--action-neutral))',
+        srf: {
+          accent1base: 'rgb(var(--surfaces-accent1base) / var(--opacity-100))',
+          accent2base: 'rgb(var(--surfaces-accent2base) / var(--opacity-100))',
+          base: 'rgb(var(--surfaces-base) / var(--opacity-100))',
+          l1: 'rgb(var(--surfaces-l1) / var(--opacity-100))',
+          l2: 'rgb(var(--surfaces-l2) / var(--opacity-100))',
+          l2a: 'rgb(var(--surfaces-l2a) / var(--opacity-100))',
+          l3: 'rgb(var(--surfaces-l3) / var(--opacity-100))',
+          l4: 'rgb(var(--surfaces-l4) / var(--opacity-100))',
+          l5: 'rgb(var(--surfaces-l5) / var(--opacity-100))',
+          invert: 'rgb(var(--surfaces-invert) / var(--opacity-100))',
+        },
+        act: {
+          accent1: {
+            default: 'rgb(var(--act-accent1) / var(--opacity-50))',
+            hover: 'rgb(var(--act-accent1) / var(--opacity-75))',
+          },
+          accent2: {
+            default: 'rgb(var(--act-accent2) / var(--opacity-50))',
+            hover: 'rgb(var(--act-accent2) / var(--opacity-75))',
+          }
+        },
         action: {
           primary: {
             default: 'rgb(var(--action-primary-default))',
@@ -296,22 +325,28 @@ module.exports = {
         },
       },
       textColor: {
-        accent: 'rgb(var(--text-accent) / var(--text-alpha-accent))',
+        acc: 'rgb(var(--text-acc))',
         max: 'rgb(var(--text-pure) / var(--text-alpha-pure))',
         high: 'rgb(var(--text-high) / var(--text-alpha-high))',
         medium: 'rgb(var(--text-medium) / var(--text-alpha-medium))',
         low: 'rgb(var(--text-low) / var(--text-alpha-low))',
         hi: 'rgb(var(--text-hi) / var(--opacity-90))',
+        'inv-hi': 'rgb(var(--text-inv-hi) / var(--opacity-90))',
         "action-default": 'rgb(var(--action-primary-default))',
         "action-neutral": 'rgb(var(--action-neutral))',
-        "med": 'rgb(var(--surfaces-accent1base)/ var(--opacity-72))',
+        "med": 'rgb(var(--text-med))',
+        "nav-item": 'rgb(var(--nav-item))',
         invert: {
           accent: 'rgb(var(--text-invert-accent) / var(--text-alpha-invert-accent))',
           high: 'rgb(var(--text-invert-high) / var(--text-alpha-invert-high))',
           medium: 'rgb(var(--text-invert-medium) / var(--text-alpha-invert-medium))',
           hi: 'rgb(var(--text-hi) / var(--opacity-87))'
         },
-
+        mean: {
+          err: 'rgb(var(--mean-err) / var(--opacity-96))',
+          alert: 'rgb(var(--mean-alert)/ var(--opacity-96))',
+          suc: 'rgb(var(--mean-suc)/ var(--opacity-96))',
+        },
       },
     },
   },
@@ -454,7 +489,7 @@ module.exports = {
           '@apply text-fb4 tab-s:text-fb5 tab-l:text-fb5 scr-s:text-fb5 scr-m:text-fb7 scr-l:text-ft8 font-weight-400': '',
         },
         '.body-l': {
-          '@apply text-f5 leading-l5b scr-l:text-f10 scr-l:leading-l10 font-weight-400': '',
+          '@apply text-fb5 scr-l:text-fb6 font-weight-400': '',
         },
         '.body-m': {
           '@apply text-f4 leading-l4b font-weight-400': '',
@@ -462,29 +497,59 @@ module.exports = {
         '.body-s': {
           '@apply text-f3 leading-l3b font-weight-400': '',
         },
+        '.body-xs': {
+          '@apply text-fb2 scr-l:text-fb3 font-weight-400': '',
+        },
         '.body-t': {
           '@apply text-f1 leading-l1b font-weight-400': '',
         },
+        '.title-m': {
+          '@apply text-ft6 scr-l:text-ft7': '',
+        },
         '.title-s': {
           '@apply text-f4 mob-l:text-f5 scr-l:text-f6': '',
+        },
+        '.title-xs': {
+          '@apply text-f3 mob-l:text-f3 scr-l:text-f3': '',
+        },
+        '.lbl-m': {
+          '@apply text-ft4 scr-l:text-ft5 font-weight-600': '',
+        },
+        '.lbl-s': {
+          '@apply text-ft3 scr-l:text-ft4 font-weight-500': '',
         },
         '.gap-default': {
           '@apply gap-16 tab-s:gap-24 scr-l:gap-32': '',
         },
         '.h1': {
-          '@apply text-f8 mob-p:text-f6 mob-l:text-f8 tab-s:text-f9 scr-s:text-f10 scr-l:text-f11': '',
+          '@apply text-fd8 tab-s:text-fd9 scr-m:text-fd10 scr-l:text-fd11': '',
         },
         '.h2': {
-          '@apply text-f7 mob-p:text-f5 mob-l:text-f7 tab-s:text-f8 scr-s:text-f9 scr-l:text-f10': '',
+          '@apply text-fd7 tab-s:text-fd8 scr-m:text-fd9 scr-l:text-fd10': '',
         },
         '.h3': {
           '@apply text-f6 mob-p:text-f5 mob-l:text-f6 tab-s:text-f7 scr-s:text-f8 scr-l:text-f9': '',
         },
         '.px-l': {
-          '@apply px-g4': '',
+          '@apply px-32 scr-l:px-40': '',
         },
         '.py-l': {
           '@apply py-g5': '',
+        },
+        '.px-m': {
+          '@apply px-g3': '',
+        },
+        '.py-m': {
+          '@apply py-g4': '',
+        },
+        '.px-s': {
+          '@apply px-g2': '',
+        },
+        '.py-s': {
+          '@apply py-g3': '',
+        },
+        '.ht-m': {
+          '@apply h-40 scr-l:h-48': '',
         },
         // 'h1': {
         //   '@apply text-3xl font-bold': '',

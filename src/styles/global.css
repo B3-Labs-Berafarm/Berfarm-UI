@@ -40,6 +40,12 @@
     --b40: 95 98 0;
     --b90: 229 232 135;
     --b96: 247 244 228;
+    /* Mean Invert Success*/
+    --g80: 113 219 158;
+    --r30: 147 0 10;
+    --y30: 92 67 0;
+    --g30: 64 76 0;
+
     /* Brand Colors */
     --brand-lighter: var(--p40);
     --brand-main: var(--p50);
@@ -47,8 +53,8 @@
     --brand-accent-2: var(--acc-ag40);
 
     /* Surface Colors */
-    --surfaces-accent1base: var(--s5);
-    --surfaces-accent2base: var(--s5);
+    --surfaces-accent1base: var(--a96);
+    --surfaces-accent2base: var(--b96);
     --surfaces-base: var(--p96);
     --surfaces-l1: var(--p98);
     --surfaces-l2: var(--p98);
@@ -57,7 +63,8 @@
     --surfaces-l4: var(--p98);
     --surfaces-l5: var(--p98);
     --surfaces-invert: var(--s5);
-
+    /* Mean Invert Success*/
+    --mean-inv-suc: var(--g80);
     /* Action Colors */
     --action-primary-default: var(--p60);
     --action-primary-hover: var(--p98);
@@ -77,12 +84,15 @@
     --action-accent-blue-hover: var(--p99); */
 
     /* Text Colors */
+    --text-acc: var(--p30);
     --text-accent: var(--p40);
     --text-max: var(--s5);
     --text-high: var(--s5);
     --text-medium: var(--s5);
+    --text-med: var(--s5);
     --text-low: var(--s5);
     --text-hi: var(--s5);
+    --text-inv-hi: var(--s98);
     /* Border Color */
     --border-light: var(--s5);
     --border-def: var(--s5);
@@ -90,9 +100,16 @@
     --text-invert-accent: var(--p70);
     --text-invert-high: var(--p98);
     --text-invert-med: var(--p98);
-
+    /* Action */
+    --act-accent1: var(--a90);
+    --act-accent2: var(--b90);
+    --mean-err: var(--r30);
+    --mean-alert: var(--y30);
+    --mean-suc: var(--g30);
+    --nav-item: var(--s98);
     /* Opacity Values */
     --opacity-100: 1;
+    --opacity-96: 0.96;
     --opacity-90: 0.9;
     --opacity-85: 0.85;
     --opacity-87: 0.87;
@@ -108,8 +125,8 @@
       /* Base Colors */
       --p100: 255 255 255;
       --p99: 241 255 254;
-      --p98: 249 252 218;
-      --p96: 211 251 204;
+      --p98: 255 248 245;
+      --p96: 255 241 234;
       --p90: 160 240 240;
       --p80: 255 183 135;
       --p70: 104 184 184;
@@ -123,22 +140,32 @@
       --s85: 192 217 218;
       --s70: 161 173 174;
       --s30: 62 73 74;
-      --s17: 33 44 45;
-      --s15: 28 39 40;
-      --s13: 25 36 36;
-      --s11: 21 31 32;
+      --s17: 40 44 22;
+      --s15: 36 39 18;
+      --s13: 32 35 14;
+      --s11: 28 31 11;
       --s9: 24 27 7;
-      --s5: 8 19 19;
-
+      --s5: 15 18 2;
+      --g30: 64 76 0;
+      /* Accent Colors*/
+      --a5: 25 15 0;
+      --a40: 123 88 0;
+      --b40: 229 232 135;
+      --b5: 17 18 0;
+      --r80: 255 180 171;
+      --y80: 237 193 97;
+      --g80: 113 219 158;
       /* Surface Colors - Dark Mode */
+      --surfaces-accent1base: var(--a5);
+      --surfaces-accent2base: var(--b5);
       --surfaces-base: var(--s5);
       --surfaces-l1: var(--s9);
       --surfaces-l2: var(--s11);
-      --surfaces-l2a: var(--s11);
+      --surfaces-l2a: var(--s5);
       --surfaces-l3: var(--s13);
       --surfaces-l4: var(--s15);
-      --surfaces-l5: var(--s20);
-      --surfaces-invert: var(--p95);
+      --surfaces-l5: var(--s17);
+      --surfaces-invert: var(--p98);
 
       /* Action Colors - Dark Mode */
       --action-primary-default: var(--p80);
@@ -152,6 +179,7 @@
       --act-p-def: var(--p80);
       --action-neutral: var(--p98);
       /* Text Colors - Dark Mode */
+      --text-acc: var(--p80);
       --text-accent: var(--p95);
       --text-primary: var(--p95);
       --text-secondary: var(--p95);
@@ -164,6 +192,17 @@
       --border-light: var(--s98);
       --border-def: var(--s98);
       --brand-main: var(--p80);
+      --text-inv-hi: var(--s5);
+      /* Mean Invert Success*/
+      --mean-inv-suc: var(--g30);
+      --mean-err: var(--r80);
+      --mean-alert: var(--y80);
+      --mean-suc: var(--g80);
+      /* Action */
+      --act-accent1: var(--a40);
+      --act-accent2: var(--b40);
+      --text-med: var(--s98);
+      --nav-item: var(--s98);
     }
   }
 }

@@ -50,12 +50,12 @@ const SAMPLE_MY_FARM = [
 export default function MyFarms() {
     const [columnView, setColumnView] = React.useState(true);
     return (
-        <div className='flex flex-col gap-80 bg-srf-base'>
+        <div key="my-farms" className='flex flex-col gap-80 bg-srf-base'>
             <div className='cover-img flex justify-end items-center'>
                 <Navbar dapp={true} />
                 <div className='container flex tab-s:justify-end items-center gap-default flex-col tab-s:flex-row'>
                     {CARD_DETAILS.map((item, index) => (
-                        <InfoCard {...item} key={`cover-info-${index}`} />
+                        <InfoCard {...{ ...item, keyValue: `cover-info-${index}` }} />
                     ))}
                 </div>
             </div>
@@ -95,7 +95,7 @@ export default function MyFarms() {
                 {columnView && (
                     <div className='grid grid-cols-1 tab-l:grid-cols-2 gap-default'>
                         {SAMPLE_MY_FARM.map((item, index) => (
-                            <FarmCard {...item} key={index} />
+                            <FarmCard {...{ ...item, keyValue: `farm-card-${index}` }} />
                         ))}
                     </div>
                 )}

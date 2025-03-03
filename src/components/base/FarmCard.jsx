@@ -3,9 +3,9 @@ import Badge from './Badge'
 import BaseYield from './BaseYield'
 import RewardYield from './RewardYield'
 
-export default function FarmCard({ key, vault_name, units, reward_multiplier, base_apr }) {
+export default function FarmCard({ keyValue, vault_name, units, reward_multiplier, base_apr }) {
     return (
-        <div key={key} className='w-full bg-lvl2 border border-light px-s py-s tab-s:px-m tab-s:py-m scr-m:px-l scr-m:py-l rounded-rnd-l space-y-g3 shadow-level2'>
+        <div key={keyValue} className='w-full bg-lvl2 border border-light px-s py-s tab-s:px-m tab-s:py-m scr-m:px-l scr-m:py-l rounded-rnd-l space-y-g3 shadow-level2'>
             <div className='flex justify-between items-center'>
                 <div className='flex justify-start items-center gap-g2'>
                     <img src='/assets/dollar.png' width={48} height={48} alt='vault image' />

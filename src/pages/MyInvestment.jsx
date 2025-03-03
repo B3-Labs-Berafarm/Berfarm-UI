@@ -2,29 +2,7 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import DataText from '../components/base/DataText';
-import {
-    Tabs,
-    TabsHeader,
-    TabsBody,
-    Tab,
-    TabPanel,
-} from "@material-tailwind/react";
-const data = [
-    {
-        label: "Deposit",
-        value: "Deposit",
-        desc: `It really matters and then like it really doesn't matter.
-      What matters is the people who are sparked by it. And the people 
-      who are like offended by it, it doesn't matter.`,
-    },
-    {
-        label: "Withdraw",
-        value: "Withdraw",
-        desc: `Because it's about motivating the doers. Because I'm here
-      to follow my dreams and inspire other people to follow their dreams, too.`,
-    },
-
-];
+import TransactionActionCard from '../components/TransactionActionCard';
 
 export default function MyInvestment() {
     const [activeTab, setActiveTab] = React.useState("Deposit");
@@ -99,33 +77,7 @@ export default function MyInvestment() {
                                     ))}
                                 </div>
                                 <div className='bg-srf-l2 shadow-level2 rounded-rnd-m border border-light w-full'>
-                                    <Tabs value={activeTab} className="">
-                                        <TabsHeader
-                                            className="rounded-none border-b border-blue-gray-50 bg-transparent p-0"
-                                            indicatorProps={{
-                                                className:
-                                                    "bg-transparent border-b-2 border-gray-900 shadow-none rounded-none",
-                                            }}
-                                        >
-                                            {data.map(({ label, value }) => (
-                                                <Tab
-                                                    key={value}
-                                                    value={value}
-                                                    onClick={() => setActiveTab(value)}
-                                                    className={`${activeTab === value ? "text-gray-900" : ""} px-l py-16 lbl-m !font-body font-weight-500`}
-                                                >
-                                                    {label}
-                                                </Tab>
-                                            ))}
-                                        </TabsHeader>
-                                        <TabsBody className='px-l py-s'>
-                                            {data.map(({ value, desc }) => (
-                                                <TabPanel key={value} value={value}>
-                                                    {desc}
-                                                </TabPanel>
-                                            ))}
-                                        </TabsBody>
-                                    </Tabs>
+                                    <TransactionActionCard />
 
                                 </div>
                             </div>

@@ -175,7 +175,7 @@
       --action-secondary-default: var(--s15);
       --action-neutral-default: var(--p95);
       --action-neutral-disabled: var(--p95);
-      --action-neutral-fill: var(--s7);
+      --action-neutral-fill: var(--s5);
       --act-p-def: var(--p80);
       --action-neutral: var(--p98);
       /* Text Colors - Dark Mode */
@@ -203,6 +203,8 @@
       --act-accent2: var(--b40);
       --text-med: var(--s98);
       --nav-item: var(--s98);
+
+      --text-low: var(--s98);
     }
   }
 }

@@ -320,7 +320,7 @@ module.exports = {
           neutral: {
             default: 'rgb(var(--action-neutral-inactive) / var(--act-alpha-neutral-inactive))',
             disabled: 'rgb(var(--action-neutral-disabled) / var(--act-alpha-neutral-disabled))',
-            filled: 'rgb(var(--action-neutral-disabled) / var(--act-alpha-neutral-disabled))',
+            filled: 'rgb(var(--action-neutral-fill))',
           },
         },
       },
@@ -329,7 +329,7 @@ module.exports = {
         max: 'rgb(var(--text-pure) / var(--text-alpha-pure))',
         high: 'rgb(var(--text-high) / var(--text-alpha-high))',
         medium: 'rgb(var(--text-medium) / var(--text-alpha-medium))',
-        low: 'rgb(var(--text-low) / var(--text-alpha-low))',
+        low: 'rgb(var(--text-low))',
         hi: 'rgb(var(--text-hi) / var(--opacity-90))',
         'inv-hi': 'rgb(var(--text-inv-hi) / var(--opacity-90))',
         "action-default": 'rgb(var(--action-primary-default))',
@@ -512,6 +512,9 @@ module.exports = {
         '.title-xs': {
           '@apply text-f3 mob-l:text-f3 scr-l:text-f3': '',
         },
+        '.lbl-l': {
+          '@apply text-ft5 scr-l:text-ft6 font-weight-600': '',
+        },
         '.lbl-m': {
           '@apply text-ft4 scr-l:text-ft5 font-weight-600': '',
         },
@@ -547,6 +550,9 @@ module.exports = {
         },
         '.py-s': {
           '@apply py-g3': '',
+        },
+        '.ht-l': {
+          '@apply h-48 scr-l:h-56': '',
         },
         '.ht-m': {
           '@apply h-40 scr-l:h-48': '',

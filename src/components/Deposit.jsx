@@ -1,7 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Input from './base/Input'
+import { useReadContract, useAccount } from 'wagmi'
+import { ADDITIONAL_CONTRACTS } from '../constants/contracts';
+import Erc20Abi from '../constants/Abi/Erc20Abi.json';
 
 export default function Deposit({ inputBlockClassName = '', inputClassName, icon, placeholder = '', label = '', }) {
+    const { address, isConnected } = useAccount();
+    console.log({ address, isConnected, HoneyToken: ADDITIONAL_CONTRACTS.HoneyToken });
+    const { data: balanceWei } = useReadContract({
+        address: ADDITIONAL_CONTRACTS.HoneyToken,
+        abi: Erc20Abi,
+        functionName: 'balanceOf',
+        args: [address],
+        // enabled: isConnected && !!address,
+    });
+    console.log({ balanceWei },)
+    const getTokenBalance = async () => {
+        try {
+            // const { data: balanceData, isError, isLoading } = useBalance({
+            //     address,
+            //     token: ADDITIONAL_CONTRACTS.HoneyToken,
+            //     enabled: isConnected,
+            // });
+
+        } catch (error) {
+            console.error(error)
+        }
+    }
+    useEffect(() => {
+        getTokenBalance()
+    }, [])
     return (
         <>
             <Input
@@ -17,7 +45,7 @@ export default function Deposit({ inputBlockClassName = '', inputClassName, icon
                 <div className='body-s font-body font-weight-700 text-hi'>64,420.00 CURR UNIT</div>
             </div>
             <div className='flex justify-center items-center py-[28px] text-mean-err font-body body-m'>
-                error Message
+                {/* error Message */}
             </div>
             <div className='flex justify-center items-center'>
                 <button className='flex justify-between items-center space-x-g0h px-l bg-action-primary-default ht-l shadow-level2 border border-light rounded-rnd-m text-inv-hi font-body'>

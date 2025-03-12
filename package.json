@@ -11,13 +11,19 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
+    "@rainbow-me/rainbowkit": "^2.2.4",
+    "@reown/appkit": "^1.6.9",
+    "@reown/appkit-adapter-wagmi": "^1.6.9",
+    "@tanstack/react-query": "^5.66.11",
     "classnames": "^2.5.1",
     "lucide-react": "^0.475.0",
     "moment": "^2.30.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.2.0",
-    "typed.js": "^2.1.0"
+    "typed.js": "^2.1.0",
+    "viem": "^2.23.5",
+    "wagmi": "^2.14.12"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",

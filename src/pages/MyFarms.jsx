@@ -8,6 +8,7 @@ import FarmCard from '../components/base/FarmCard';
 import DynamicTable from '../components/base/Table';
 import FarmTable from '../components/base/FarmTable';
 import Footer from '../components/Footer';
+import { useAccount } from 'wagmi';
 
 const CARD_DETAILS = [
     { label: "Total Farm Value", value: "$39M UDS" },
@@ -49,8 +50,10 @@ const SAMPLE_MY_FARM = [
 ]
 export default function MyFarms() {
     const [columnView, setColumnView] = React.useState(true);
+    const { isConnected } = useAccount()
     return (
         <div key="my-farms" className='flex flex-col gap-80 bg-srf-base'>
+            {/* <div>isConnected {isConnected?.toString()}</div> */}
             <div className='cover-img flex justify-end items-center'>
                 <Navbar dapp={true} />
                 <div className='container flex tab-s:justify-end items-center gap-default flex-col tab-s:flex-row'>

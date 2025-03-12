@@ -3,6 +3,112 @@ import React, { useState, useEffect } from 'react';
 
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+const CustomConnectButton = () => {
+    return (
+        <ConnectButton.Custom>
+            {({
+                account,
+                chain,
+                openAccountModal,
+                openChainModal,
+                openConnectModal,
+                authenticationStatus,
+                mounted,
+            }) => {
+                // Note: If your app doesn't use authentication, you
+                // can remove all 'authenticationStatus' checks
+                const ready = mounted && authenticationStatus !== 'loading';
+                const connected =
+                    ready &&
+                    account &&
+                    chain &&
+                    (!authenticationStatus ||
+                        authenticationStatus === 'authenticated');
+
+                return (
+                    <div
+                        {...(!ready && {
+                            'aria-hidden': true,
+                            'style': {
+                                opacity: 0,
+                                pointerEvents: 'none',
+                                userSelect: 'none',
+                            },
+                        })}
+                    >
+                        {(() => {
+                            if (!connected) {
+                                return (
+                                    <button onClick={openConnectModal} type="button" className={`bg-action-primary-default lbl-m px-m ht-m border-[3px] border-light rounded-rnd-m shadow-level1  m-w-[253px] text-hi font-body font-500 text-ft5 scr-l:text-ft6 `}>
+                                        Connect Wallet
+                                    </button>
+                                );
+                            }
+
+                            if (chain.unsupported) {
+                                return (
+                                    <button onClick={openChainModal} type="button" className={`bg-action-primary-default lbl-m px-m ht-m border-[3px] border-light rounded-rnd-m shadow-level1  m-w-[253px] text-hi font-body font-500 text-ft5 scr-l:text-ft6 `}>
+                                        Wrong network
+                                    </button>
+                                );
+                            }
+
+                            return (
+                                <div className='flex justify-center items-center gap-g1'>
+                                    <button className='flex flex-col justify-start items-start font-body' onClick={openAccountModal}>
+                                        <div className='body-s font-500 text-med'>{chain?.name}</div>
+                                        <div className='lbl-m font-600'>{account.displayName}</div>
+                                    </button>
+                                    <button
+                                        onClick={openChainModal}
+                                        style={{ display: 'flex', alignItems: 'center' }}
+                                        type="button"
+                                    >
+                                        {chain.hasIcon && (
+                                            <div
+                                                style={{
+                                                    background: chain.iconBackground,
+                                                    width: 40,
+                                                    height: 40,
+                                                    borderRadius: '4px',
+                                                    overflow: 'hidden',
+                                                    marginRight: 4,
+                                                    display: 'flex',
+                                                    justifyContent: 'center',
+                                                    alignItems: 'center'
+                                                }}
+                                            >
+                                                {chain.iconUrl && (
+                                                    <img
+                                                        alt={chain.name ?? 'Chain icon'}
+                                                        src={chain.iconUrl}
+                                                        style={{ width: 36, height: 36 }}
+                                                    />
+                                                )}
+                                            </div>
+                                        )}
+                                        {/* {chain.name} */}
+                                    </button>
+
+                                    {/* <button onClick={openAccountModal} type="button" className='bg-red-900'>
+                                        {account.displayName}
+                                        {account.displayBalance
+                                            ? ` (${account.displayBalance})`
+                                            : ''}
+                                    </button> */}
+                                </div>
+                            );
+                        })()}
+                    </div>
+                );
+            }}
+        </ConnectButton.Custom>
+    );
+};
+
+// export default CustomConnectButton;
 
 function NavbarLargerScreen({ dapp }) {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -56,7 +162,7 @@ function NavbarLargerScreen({ dapp }) {
                             <path d="M312 54.2092C307.227 56.4935 301.501 57.0248 299.38 57.3435C298.425 49.7998 297.418 42.3091 296.092 34.6591C294.978 40.8747 295.084 45.3904 294.978 52.9341C291.001 53.5185 284.691 54.2092 282.411 54.3154C281.881 51.4998 280.874 46.2404 280.714 45.2841C280.396 42.9997 279.601 39.4935 278.593 35.6153C278.434 43.1591 277.427 50.9154 277.639 58.831C272.655 58.7248 266.185 58.1404 264.33 57.8748C264.436 55.1654 265.284 44.6997 265.602 42.4154C266.291 40.131 267.14 15.3746 267.564 13.3559C274.351 10.9121 280.29 11.5496 283.26 11.2309C284.267 15.9059 285.646 22.8122 286.918 27.0622C287.184 25.8934 287.926 22.3872 288.297 21.2184C289.146 17.9247 289.835 13.9934 290.418 10.3278C292.645 10.0621 296.675 9.58398 300.758 9.58398C302.614 9.58398 304.47 9.74337 306.167 10.009C306.485 11.5496 307.174 18.2434 307.28 19.8903C307.439 22.8653 307.545 25.7341 308.023 28.8153C308.553 32.3747 309.189 36.0403 309.72 39.706C310.038 41.6716 311.522 52.9873 312 54.3154V54.2092Z" />
                         </svg>
                     </a>
-                    <div className="space-x-6">
+                    <div className="space-x-6 flex justify-end items-center">
                         <Link to={{ pathname: '/farms' }} className='font-body lbl-m text-med'>
                             Farms
                         </Link>
@@ -66,16 +172,13 @@ function NavbarLargerScreen({ dapp }) {
                         <Link to={{ pathname: '/investment' }} className='font-body lbl-m text-med'>
                             investment
                         </Link>
-                        <button className='bg-[#AAAE8F] px-[32px] rounded-[24px] h-[48px] m-w-[253px] text-hi font-body font-500 text-ft5 scr-l:text-ft6 cursor-not-allowed'>Connect wallet</button>
+                        <CustomConnectButton />
                     </div>
                 </div>
             </div>
         </nav >
     );
 }
-
-
-
 
 
 function NavbarMobile() {

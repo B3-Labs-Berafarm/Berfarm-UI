@@ -16,7 +16,7 @@ export default function Withdraw() {
                 <div className='body-s font-body font-weight-700 text-hi'>64,420.00 CURR UNIT</div>
             </div> */}
             <div className='flex justify-center items-center py-[28px] text-mean-err font-body body-m'>
-                error Message
+                {/* error Message */}
             </div>
             <div className='flex justify-center items-center'>
                 <button className='flex justify-between items-center space-x-g0h px-l bg-action-primary-default ht-l shadow-level2 border border-light rounded-rnd-m text-inv-hi font-body'>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import DataText from '../components/base/DataText';
@@ -6,7 +6,10 @@ import TransactionActionCard from '../components/TransactionActionCard';
 
 export default function MyInvestment() {
     const [activeTab, setActiveTab] = React.useState("Deposit");
-
+    // Scroll to top on component mount
+    useEffect(() => {
+        window.scrollTo(0, 0); // Scroll to top of the page
+    }, []);
     return (
         <div className='flex flex-col gap-80 bg-srf-accent2base'>
             <Navbar dapp={true} />

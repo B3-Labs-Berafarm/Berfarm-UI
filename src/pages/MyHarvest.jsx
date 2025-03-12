@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import moment from 'moment'
 import Navbar from '../components/Navbar'
 import DataText from '../components/base/DataText'
@@ -9,7 +9,10 @@ import { Link } from 'react-router-dom';
 import Pagination from '../components/Pagination';
 
 export default function MyHarvest() {
-
+    // Scroll to top on component mount
+    useEffect(() => {
+        window.scrollTo(0, 0); // Scroll to top of the page
+    }, []);
     const getActiveFarmsHeaders = () => {
         const headerContent = (
             <tr>

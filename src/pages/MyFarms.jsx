@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import { useAccount } from 'wagmi';
+import axios from 'axios';
 import Navbar from '../components/Navbar'
-import InfoCard from '../components/base/InfoCard'
+import InfoCard from '../components/base/InfoCard';
 import { Grip, List, Search, Filter } from 'lucide-react';
 import classNames from 'classnames';
 import Input from '../components/base/Input';
@@ -8,8 +10,8 @@ import FarmCard from '../components/base/FarmCard';
 import DynamicTable from '../components/base/Table';
 import FarmTable from '../components/base/FarmTable';
 import Footer from '../components/Footer';
-import { useAccount } from 'wagmi';
-
+import numberAbbreviate from 'number-abbreviate'
+import { capitalize } from 'underscore.string';
 const CARD_DETAILS = [
     { label: "Total Farm Value", value: "$39M UDS" },
     { label: "Total Farmers", value: "2.97M" },
@@ -48,24 +50,58 @@ const SAMPLE_MY_FARM = [
         status: 'Active'
     }
 ]
+const getAnalyticsOverview = async () => {
+    try {
+        await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/analytics/overview`);
+    } catch (error) {
+
+    }
+}
 export default function MyFarms() {
     const [columnView, setColumnView] = React.useState(true);
-    const { isConnected } = useAccount()
+    const [analyticsOverview, setAnalyticsOverview] = React.useState(true);
+    const [vaultsData, setVaultsData] = React.useState([]);
+    const { isConnected } = useAccount();
+
+    const getAnalyticsOverview = async () => {
+        try {
+            const { data: { data } } = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/analytics/overview`);
+            console.log({ data })
+            setAnalyticsOverview(data);
+        } catch (error) {
+            console.error(error)
+        }
+    }
+    const getVaultDetails = async () => {
+        try {
+            const { data: { data } } = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/vault/`);
+            console.log({ data })
+            setVaultsData(data);
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    useEffect(() => {
+        getVaultDetails();
+    }, []);
+    useEffect(() => {
+        getAnalyticsOverview();
+    }, []);
     return (
         <div key="my-farms" className='flex flex-col gap-80 bg-srf-base'>
             {/* <div>isConnected {isConnected?.toString()}</div> */}
             <div className='cover-img flex justify-end items-center'>
                 <Navbar dapp={true} />
                 <div className='container flex tab-s:justify-end items-center gap-default flex-col tab-s:flex-row'>
-                    {CARD_DETAILS.map((item, index) => (
-                        <InfoCard {...{ ...item, keyValue: `cover-info-${index}` }} />
-                    ))}
+                    <InfoCard {...{ label: 'Total Farm Value', value: numberAbbreviate(analyticsOverview?.totalValue || 0, 2), keyValue: `cover-info-total-farm-value`, valueClassName: "uppercase" }} />
+                    <InfoCard {...{ label: 'Total Farmers', value: numberAbbreviate(analyticsOverview?.total_farmers || 0, 2), keyValue: `cover-info-total-farmers`, valueClassName: "uppercase" }} />
                 </div>
             </div>
             <div className='container gap-g4 flex flex-col'>
                 <div className='flex justify-between items-center text-hi flex-col tab-s:flex-row'>
                     <div className='flex items-center gap-g4 justify-between tab-s:justify-start w-full'>
-                        <div className='text-hi h2 font-weight-800 font-headings'>All Farms</div>
+                        <div className='text-hi h2 font-weight-800 font-headings'>All Farms {""}</div>
                         <div className='flex items-center justify-start gap-4'>
                             <Grip
                                 size={24}
@@ -97,13 +133,13 @@ export default function MyFarms() {
                 </div>
                 {columnView && (
                     <div className='grid grid-cols-1 tab-l:grid-cols-2 gap-default'>
-                        {SAMPLE_MY_FARM.map((item, index) => (
+                        {vaultsData.map((item, index) => (
                             <FarmCard {...{ ...item, keyValue: `farm-card-${index}` }} />
                         ))}
                     </div>
                 )}
                 {!columnView && (
-                    <FarmTable data={SAMPLE_MY_FARM} />
+                    <FarmTable data={vaultsData} />
                 )}
 
             </div>

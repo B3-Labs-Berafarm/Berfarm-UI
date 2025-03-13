@@ -1,13 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function BaseYield({ base_apr, tableView = false }) {
+export default function BaseYield({ base_apr, vaultId = '', tableView = false }) {
     const navigateUrl = () => {
         window
     }
     return (
-        <Link to={{ pathname: "/investment" }}>
-
+        <Link to={`/investment/${vaultId}?vaultTrancheType=base`}>
             <div className={`flex justify-between items-center p-g2 bg-act-accent1-default rounded-16 ${tableView ? 'min-h-[80px]' : ''} `} onClick={() => navigateUrl()}>
                 <div className='flex gap-g2 text-hi'>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -25,7 +24,7 @@ export default function BaseYield({ base_apr, tableView = false }) {
                     </svg>
                     <p className={`${tableView ? 'body-s' : 'body-l'} font-body text-hi`}>Base Yield Tranche</p>
                 </div>
-                <div className={`${tableView ? 'body-s' : 'body-l'} font-body text-hi`}>APR <span className='font-weight-800'>{base_apr}</span></div>
+                <div className={`${tableView ? 'body-s' : 'body-l'} font-body text-hi`}>APR <span className='font-weight-800'>{base_apr || '-'}</span></div>
             </div >
         </Link>
     )

@@ -19,7 +19,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/farms" element={<MyFarms />} />
         <Route path="/harvest" element={<MyHarvest />} />
-        <Route path="/investment" element={<MyInvestment />} />
+        <Route path="/investment/:vaultId" element={<MyInvestment />} />
         <Route path="/" element={<Navigate to="/" />} />
       </Routes>
       {/* </Router> */}

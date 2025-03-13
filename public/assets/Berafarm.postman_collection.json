@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "26f2e5c0-acf3-4c98-ab30-67705478c4b8",
+		"name": "Berafarm",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9339344"
+	},
+	"item": [
+		{
+			"name": "GetTotalFarmValue",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "TVL",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"trancheVaultInfo\": [{\n        \"trancheVaultAddress\": \"0xbec6c578ff30d5c4cbef8dad1f441ad76e472a6f\",\n        \"strategyManagerAddress\": \"0x97a7df762cf43c8ea13133d7f6c18457fd041e3c\"\n    }]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4050/trancheDetails/trancheVaultTvl",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4050",
+					"path": [
+						"trancheDetails",
+						"trancheVaultTvl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VaultRate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"trancheVaultInfo\": [{\n        \"trancheVaultAddress\": \"0xbec6c578ff30d5c4cbef8dad1f441ad76e472a6f\",\n        \"strategyManagerAddress\": \"0x97a7df762cf43c8ea13133d7f6c18457fd041e3c\"\n    }]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4050/trancheDetails/getCurrentYieldVaultRate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4050",
+					"path": [
+						"trancheDetails",
+						"getCurrentYieldVaultRate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "trancheThickness",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"trancheVaultInfo\": [{\n        \"trancheVaultAddress\": \"0xbec6c578ff30d5c4cbef8dad1f441ad76e472a6f\",\n        \"strategyManagerAddress\": \"0x97a7df762cf43c8ea13133d7f6c18457fd041e3c\"\n    }]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4050/trancheDetails/getTrancheVaultThickness",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4050",
+					"path": [
+						"trancheDetails",
+						"getTrancheVaultThickness"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "trancheDetails",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"trancheVaultInfo\": [{\n        \"trancheVaultAddress\": \"0xbec6c578ff30d5c4cbef8dad1f441ad76e472a6f\",\n        \"strategyManagerAddress\": \"0x97a7df762cf43c8ea13133d7f6c18457fd041e3c\"\n    }]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4050/trancheDetails/getTrancheDetails",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4050",
+					"path": [
+						"trancheDetails",
+						"getTrancheDetails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TrancheStrategyDetails",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"trancheVaultInfo\": [{\n        \"trancheVaultAddress\": \"0xbec6c578ff30d5c4cbef8dad1f441ad76e472a6f\",\n        \"strategyManagerAddress\": \"0x97a7df762cf43c8ea13133d7f6c18457fd041e3c\"\n    }]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4050/trancheDetails/getStrategyDetails",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4050",
+					"path": [
+						"trancheDetails",
+						"getStrategyDetails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

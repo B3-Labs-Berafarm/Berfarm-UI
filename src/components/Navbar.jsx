@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { useAccount } from 'wagmi';
 
 const CustomConnectButton = () => {
     return (
@@ -114,7 +115,7 @@ function NavbarLargerScreen({ dapp }) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
-
+    const { address, isConnected } = useAccount();
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
@@ -169,9 +170,9 @@ function NavbarLargerScreen({ dapp }) {
                         <Link to={{ pathname: '/harvest' }} className='font-body lbl-m text-med'>
                             My Harvest
                         </Link>
-                        <Link to={{ pathname: '/investment' }} className='font-body lbl-m text-med'>
+                        {/* <Link to={{ pathname: '/investment' }} className='font-body lbl-m text-med'>
                             investment
-                        </Link>
+                        </Link> */}
                         <CustomConnectButton />
                     </div>
                 </div>

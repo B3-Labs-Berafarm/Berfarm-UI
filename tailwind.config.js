@@ -503,6 +503,9 @@ module.exports = {
         '.body-t': {
           '@apply text-f1 leading-l1b font-weight-400': '',
         },
+        '.title-l': {
+          '@apply text-ft7 scr-l:text-ft8': '',
+        },
         '.title-m': {
           '@apply text-ft6 scr-l:text-ft7': '',
         },

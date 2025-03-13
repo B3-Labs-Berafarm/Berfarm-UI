@@ -13,6 +13,7 @@ import {
   optimism,
   arbitrum,
   base,
+  berachain
 } from 'wagmi/chains';
 import {
   QueryClientProvider,
@@ -21,7 +22,7 @@ import {
 const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'ac5e9ce9bb7785570db551f7abfde48a',
-  chains: [polygon, optimism, arbitrum, base],//mainnet
+  chains: [berachain],//mainnet
   ssr: true, // If your dApp uses server side rendering (SSR)
 })
 import './index.css'

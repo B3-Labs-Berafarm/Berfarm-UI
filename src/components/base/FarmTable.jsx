@@ -2,6 +2,7 @@ import React from 'react'
 import DynamicTable from './Table';
 import BaseYield from './BaseYield';
 import RewardYield from './RewardYield';
+import { titleize } from 'underscore.string';
 const headers = ['Farm', 'Status', 'TFV', 'Base Yield Tranche', 'Rewards Yield Tranche'];
 
 export default function FarmTable({ data }) {
@@ -26,21 +27,21 @@ export default function FarmTable({ data }) {
             <tr key={rowIndex} className={`${rowIndex % 2 === 0 ? 'bg-lvl2' : 'bg-lvl2a'} text-hi`}>
                 <td className="py-g1 px-g2 whitespace-nowrap body-s font-body">
                     <div className='flex items-center h-full gap-4'>
-                        <img src='/assets/dollar.png' width={20} height={20} alt='vault image' />
-                        <div>{row.vault_name}</div>
+                        <img src='/assets/Bera.ico' width={20} height={20} alt='vault image' className='rounded-full' />
+                        <div>{row.vaultName || '-'}</div>
                     </div>
                 </td>
                 <td className="py-g1 px-g2 whitespace-nowrap body-s font-body">
-                    {row.status}
+                    {titleize(row.vaultStatus) || '-'}
                 </td>
                 <td className="py-g1 px-g2 whitespace-nowrap body-s font-body text-right">
-                    {row.tfv}
+                    {row.tfv || '-'}
                 </td>
                 <td className="py-g1 px-g2 whitespace-nowrap body-s font-body">
-                    <BaseYield {...row} tableView={true} />
+                    <BaseYield {...{ row, vaultId: row?._id }} tableView={true} />
                 </td>
                 <td className="py-g1 px-g2 whitespace-nowrap body-s font-body">
-                    <RewardYield {...row} tableView={true} />
+                    <RewardYield {...{ ...row, vaultId: row?._id }} tableView={true} />
                 </td>
             </tr>
         ));

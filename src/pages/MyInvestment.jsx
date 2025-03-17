@@ -239,7 +239,7 @@ export default function MyInvestment() {
                                         <path fillRule="evenodd" clipRule="evenodd" d="M44 8L4 8L4 4L44 4L44 8Z" fill="currentColor" fillOpacity="0.87" />
                                     </svg>
                                 </div>
-                                <button className='border-2 border-action-primary-default rounded-rnd-m px-s tab-l:px-m ht-m font-body text-action-primary-default' onClick={() => setVaultType(vaultType === 'base' ? 'rewards' : 'base')}>
+                                <button className='border-2 border-action-primary-default hover:border-action-primary-hover rounded-rnd-m px-s tab-l:px-m ht-m font-body text-action-primary-default hover:text-action-primary-hover ' onClick={() => setVaultType(vaultType === 'base' ? 'rewards' : 'base')}>
                                     {getVaultButtonDisplayText()}
                                 </button>
                             </div>

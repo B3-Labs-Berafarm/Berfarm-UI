@@ -35,7 +35,7 @@ export default function RewardYield({ reward_multiplier, vaultId = '', tableView
     return (
         <Link
             to={`/investment/${vaultId}?vaultTrancheType=rewards`}>
-            <div className={`flex justify-between items-start p-g2 bg-act-accent2-default rounded-16 ${tableView ? 'min-h-[80px]' : ''} `}>
+            <div className={`flex justify-between items-start p-g2 bg-act-accent2-default hover:bg-act-accent2-hover rounded-16 ${tableView ? 'min-h-[80px]' : ''} `}>
                 <div className='flex gap-g2  text-hi'>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <g id="Icons Unique">

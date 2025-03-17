@@ -118,7 +118,7 @@ export default function MyFarms() {
                 <Navbar dapp={true} />
                 {console.log({ MUMN: Number(analyticsOverview?.totalValue || 0) })}
                 <div className='container flex tab-s:justify-end items-center gap-default flex-col tab-s:flex-row'>
-                    <InfoCard {...{ label: 'Total Farm Value', value: numberAbbreviate(numberToFixed(analyticsOverview?.totalValue), 2) || '-', keyValue: `cover-info-total-farm-value`, valueClassName: "uppercase" }} />
+                    <InfoCard {...{ label: 'Total Farm Value', value: `${numberAbbreviate(numberToFixed(analyticsOverview?.totalValue), 2) || '0'} ${analyticsOverview?.symbol || 'USD'}` || '-', keyValue: `cover-info-total-farm-value`, valueClassName: "uppercase" }} />
                     <InfoCard {...{ label: 'Total Farmers', value: numberAbbreviate(Number(analyticsOverview?.total_farmers || 0), 2), keyValue: `cover-info-total-farmers`, valueClassName: "uppercase" }} />
                 </div>
             </div>

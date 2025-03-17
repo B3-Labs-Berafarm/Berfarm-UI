@@ -7,12 +7,32 @@ import DynamicTable from '../components/base/Table';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import Pagination from '../components/Pagination';
+import { useAccount } from 'wagmi'
+import axios from 'axios'
+import { numberToFixed } from '../utils/numbers'
+import NoDataFound from '../components/base/NoDataFound'
 
 export default function MyHarvest() {
+    const { address, isConnected } = useAccount();
+    const [activeFarms, setActiveFarms] = React.useState([]);
+    const getUserActiveFarms = async () => {
+        try {
+            // const payload = { userAddress: '0xB7E404d794b886FDD47a70e568911513f8B7C36b' }
+
+            const { data: { data } } = await axios.get(`${import.meta.env.VITE_API_URL}/trancheDetails/getActiveFarmsForUser?userAddress=${'0xB7E404d794b886FDD47a70e568911513f8B7C36b'}`);
+            // console.log({ data })
+            setActiveFarms(data?.activeFarms || []);
+        } catch (error) {
+            console.error(error)
+        }
+    }
     // Scroll to top on component mount
     useEffect(() => {
         window.scrollTo(0, 0); // Scroll to top of the page
     }, []);
+    useEffect(() => {
+        getUserActiveFarms();
+    }, [address]);
     const getActiveFarmsHeaders = () => {
         const headerContent = (
             <tr>
@@ -47,34 +67,36 @@ export default function MyHarvest() {
     }
 
     const getRowContentsForFarms = () => {
-        const rowsContent = (SAMPLE_MY_FARM || []).map((row, rowIndex) => (
+        const rowsContent = (activeFarms || [])?.map((row, rowIndex) => (
             <tr key={rowIndex} className={`${rowIndex % 2 === 0 ? 'bg-lvl2' : 'bg-lvl2a'} text-hi`}>
                 <td className="py-g1 px-g2 whitespace-nowrap body-s font-body">
                     <div className='flex items-center h-full gap-4'>
-                        <img src='/assets/dollar.png' width={20} height={20} alt='vault image' />
-                        <div>{row.vault_name}</div>
+                        <img src='/assets/Bera.ico' width={20} height={20} alt='vault image' className='rounded-full' />
+                        <div>{row?.vaultName}</div>
                     </div>
                 </td>
-                <td className={`py-g1 px-g2 whitespace-nowrap body-s font-body ${row?.status?.toLowerCase() === 'active' ? 'text-mean-suc' : 'text-mean-err'}`}>
-                    {row.status}
+                <td className={`py-g1 px-g2 whitespace-nowrap body-s font-body ${row?.vaultStatus?.toLowerCase() === 'active' ? 'text-mean-suc' : 'text-mean-err'}`}>
+                    {row?.vaultStatus}
                 </td>
                 <td className="py-g1 px-g2 whitespace-nowrap body-s font-body">
-                    {row.initial_deposit}
+                    {row?.trancheType}
                 </td>
                 <td className="py-g1 px-g2 whitespace-nowrap body-s font-body">
-                    {row.initial_deposit}
+                    {numberToFixed(row?.initialDeposit, 6) || '-'}
                 </td>
                 <td className="py-g1 px-g2 whitespace-nowrap body-s font-body">
-                    {row.current_value}
+                    {numberToFixed(row?.currentInvestment, 6) || '-'}
                 </td>
                 <td className="py-g1 px-g2 whitespace-nowrap body-s font-body">
-                    {row.apr}
+                    {numberToFixed(row?.returnPercentage, 2) || '-'}
                 </td>
                 <td className="py-g1 px-g2 whitespace-nowrap body-s font-body text-right">
                     <div className='flex justify-end space-x-[-4px] '>
-                        {REWARDS_INFO.map((reward, index) => (
+                        {row?.trancheType?.toLowerCase().includes('base') && <>-</>}
+                        {row?.trancheType?.toLowerCase().includes('reward') && <><img src={`/assets/icons/ionic.svg`} alt='Reward' className='w-20 h-20 shadow-level2 rounded-full transition-transform transform hover:-translate-x-2 cursor-pointer' /></>}
+                        {/* {REWARDS_INFO.map((reward, index) => (/assets/icons/ionic.svg
                             <img key={`icon-${index}`} src={ICON_IMAGES[reward.key]} alt={reward.key} className='w-20 h-20 shadow-level2 rounded-full' />
-                        ))}
+                        ))} */}
                     </div>
                 </td>
             </tr >
@@ -172,7 +194,9 @@ export default function MyHarvest() {
                 </div>
                 <div className='flex flex-col gap-g4'>
                     <div className='h2 text-hi font-headings font-weight-800'>Active Farms</div>
-                    <DynamicTable headerContent={getActiveFarmsHeaders()} rowsContent={getRowContentsForFarms()} />
+                    {(!!activeFarms?.length) && <DynamicTable headerContent={getActiveFarmsHeaders()} rowsContent={getRowContentsForFarms()} />}
+                    {!(!!activeFarms?.length) && <NoDataFound />}
+
                 </div>
                 <div className='flex flex-col gap-g4'>
                     <div className='h2 text-hi font-headings font-weight-800'>Transaction History</div>
@@ -186,7 +210,7 @@ export default function MyHarvest() {
 }
 
 
-const ACTIVE_FARMS_HEADERS = ['Farm Name', 'Status', 'Tranche', 'Initial Deposit', 'Current Value', 'APR', 'Rewards'];
+const ACTIVE_FARMS_HEADERS = ['Farm Name', 'Status', 'Tranche', 'Initial Deposit', 'Current Value', 'Return Percentage', 'Rewards'];
 const TRANSACTIONS_HEADERS = ['Date', 'Farm Name', 'Tranche', 'Asset', 'Amount', 'Txn', 'Actions'];
 const ICON_IMAGES = {
     ionic: "/assets/icons/ionic.svg",

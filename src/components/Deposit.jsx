@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import Input from './base/Input'
-import { useReadContract, useAccount } from 'wagmi'
+import { useReadContract, useAccount, useWriteContract, useWaitForTransactionReceipt, useSimulateContract } from 'wagmi'
 import { ADDITIONAL_CONTRACTS } from '../constants/contracts';
 import Erc20Abi from '../constants/Abi/Erc20Abi.json';
 import { ethers } from "ethers";
+import TrancheVaultAbi from '../constants/abi/TrancheVaultAbi.json';
 
 export default function Deposit({ inputBlockClassName = '', inputClassName, icon, placeholder = '', label = '', }) {
     const [userBalance, setUserBalance] = useState(0);
     const [form, setForm] = useState({ amount: 0 });
     const { address, isConnected } = useAccount();
-    console.log({ isConnected })
-    console.log(import.meta.env.VITE_API_URL); // "https://api.example.com"
-    console.log(import.meta.env.VITE_APP_TITLE); // "My Awesome App"
     const { data: balanceWei } = useReadContract({
         address: ADDITIONAL_CONTRACTS.HoneyToken,
         abi: Erc20Abi,
@@ -24,11 +22,10 @@ export default function Deposit({ inputBlockClassName = '', inputClassName, icon
             console.log("BALANCE:", ethers.formatEther(balanceWei));
             setUserBalance(ethers.formatEther(balanceWei))
         }
-
     }
     useEffect(() => {
         getTokenBalance()
-    }, [balanceWei])
+    }, [balanceWei]);
     return (
         <>
             <Input

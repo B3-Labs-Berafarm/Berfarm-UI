@@ -6,6 +6,8 @@ import DataText from '../components/base/DataText';
 import TransactionActionCard from '../components/TransactionActionCard';
 import { useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { useAccount } from 'wagmi';
+import { numberToFixed } from '../utils/numbers';
 
 export default function MyInvestment() {
     const [activeTab, setActiveTab] = React.useState("Deposit");
@@ -13,7 +15,22 @@ export default function MyInvestment() {
     const chartTrancheStructureRef = React.useRef(null);
     const [strategyInformation, setStrategyInformation] = React.useState();
     const [vaultInformation, setVaultInformation] = React.useState({});
+    const [userInvestments, setUserInvestments] = React.useState({});
     const [vaultType, setVaultType] = React.useState('base');
+    const { address, isConnected } = useAccount();
+    const getUserInvestments = async () => {
+        try {
+            if (address) {
+                // TODO
+                const payload = { userAddress: '0xB7E404d794b886FDD47a70e568911513f8B7C36b' }
+                const { data: { data } } = await axios.post(`${import.meta.env.VITE_API_URL}/trancheDetails/getUserInvestmentDetails`, payload);
+                console.log("setUserInvestments ", data)
+                setUserInvestments(data);
+            }
+        } catch (error) {
+            console.error(error)
+        }
+    }
     const getStrategyInformation = async () => {
         try {
             const { trancheVaultAddress, strategyManagerAddress } = vaultInformation;
@@ -72,8 +89,10 @@ export default function MyInvestment() {
     }, [vaultId]);
     useEffect(() => {
         getStrategyInformation();
-
     }, [vaultInformation]);
+    useEffect(() => {
+        getUserInvestments();
+    }, [address]);
 
     useEffect(() => {
         const chart = echarts.init(chartStrategyCompositionRef.current);
@@ -178,6 +197,28 @@ export default function MyInvestment() {
             vaultInformation?.yieldVaultDetails?.vaultKeyPointers :
             vaultInformation?.rewardVaultDetails?.vaultKeyPointers
     }
+    const getDepositInformation = () => {
+        const { userDetails = [] } = userInvestments;
+        console.log("vaultInformation?.trancheVaultAddress?.toLowerCase() ", vaultInformation?.trancheVaultAddress?.toLowerCase(), userDetails, userInvestments)
+        const investment = userDetails?.find((item) => item?.vaultAddress?.toLowerCase() === vaultInformation?.trancheVaultAddress?.toLowerCase());
+        console.log("investment ", investment)
+        const currency = investment?.currency || ''
+        const totalInitialFarmValue = {
+            label: 'Total Initial Farm Value',
+            base: `${investment?.totalInitialFarmValue?.["0"] || 0} ${currency}`,
+            rewards: `${investment?.totalInitialFarmValue?.["1"] || 0} ${currency}`,
+            hasInfo: false
+        }
+        const totalCurrentFarmValue = {
+            label: 'Current Farm Value',
+            base: `${investment?.totalCurrentFarmValue?.["0"] || 0} ${currency}`,
+            rewards: `${investment?.totalCurrentFarmValue?.["1"] || 0} ${currency}`,
+            hasInfo: false
+        }
+        console.log("AB", [totalInitialFarmValue, totalCurrentFarmValue])
+        return [totalInitialFarmValue, totalCurrentFarmValue]
+
+    }
     return (
         <div className='flex flex-col gap-80 bg-srf-accent2base'>
             <Navbar dapp={true} />
@@ -198,7 +239,7 @@ export default function MyInvestment() {
                                         <path fillRule="evenodd" clipRule="evenodd" d="M44 8L4 8L4 4L44 4L44 8Z" fill="currentColor" fillOpacity="0.87" />
                                     </svg>
                                 </div>
-                                <button className='border-2 border-action-primary-default rounded-rnd-m px-s tab-l:px-m ht-m font-body text-action-primary-default' onClick={() => setVaultType(vaultType === 'base' ? 'reward' : 'base')}>
+                                <button className='border-2 border-action-primary-default rounded-rnd-m px-s tab-l:px-m ht-m font-body text-action-primary-default' onClick={() => setVaultType(vaultType === 'base' ? 'rewards' : 'base')}>
                                     {getVaultButtonDisplayText()}
                                 </button>
                             </div>
@@ -230,6 +271,34 @@ export default function MyInvestment() {
                                         infoText={item.hasInfo ? item.infoText : undefined}
                                     />
                                 ))}
+                                {/* <DataText
+                                    label={`Total Farm Value Locked`}
+                                    value={''}
+                                    dataTextClassName='flex justify-between items-center font-body'
+                                    valueClassName={`font-weight-700 body-m  text-hi`}
+                                    labelClassName={`body-m text-med`}
+                                />
+                                <DataText
+                                    label={`Farm Status`}
+                                    value={''}
+                                    dataTextClassName='flex justify-between items-center font-body'
+                                    valueClassName={`font-weight-700 body-m  text-hi`}
+                                    labelClassName={`body-m text-med`}
+                                />
+                                <DataText
+                                    label={vaultType === 'base' ? 'Fixed APR' : 'Rewards Multiplier'}
+                                    value={''}
+                                    dataTextClassName='flex justify-between items-center font-body'
+                                    valueClassName={`font-weight-700 body-m  text-hi`}
+                                    labelClassName={`body-m text-med`}
+                                />
+                                <DataText
+                                    label={`Performance Fees`}
+                                    value={''}
+                                    dataTextClassName='flex justify-between items-center font-body'
+                                    valueClassName={`font-weight-700 body-m  text-hi`}
+                                    labelClassName={`body-m text-med`}
+                                /> */}
                             </div>
                         </div>
                         <div className='hidden scr-s:block scr-s:col-span-1'></div>
@@ -237,21 +306,43 @@ export default function MyInvestment() {
                             <div className='flex flex-col gap-g4'>
                                 <div className='p-g2 tab-l:p-g4 bg-srf-l2 shadow-level2 rounded-rnd-m border border-light w-full'>
                                     <p className='text-hi font-titles title-s font-weight-800'>Your Deposits</p>
-                                    {depositData.map((item, index) => (
+                                    {(getDepositInformation())?.map((item, index) => (
                                         <DataText
                                             key={`deposit-${index}`}
-                                            label={item.label}
-                                            value={item.value}
+                                            label={item?.label || '-'}
+                                            value={numberToFixed(item[`${vaultType}`], 6) || '-'}
                                             dataTextClassName='flex justify-between items-center font-body py-g1'
-                                            valueClassName={`font-weight-700 ${index === 0 || index === 3 ? 'body-m' : 'body-xs'} text-hi`}
-                                            labelClassName={`${index === 0 || index === 3 ? 'body-m' : 'body-xs'} text-med ${item.hasInfo ? 'flex items-center gap-g0h' : ''}`}
+                                            valueClassName={`font-weight-700 body-m text-hi`}
+                                            labelClassName={`body-m text-med`}
                                             infoText={item.hasInfo ? item.infoText : undefined}
+                                        />
+                                    ))}
+                                    <DataText
+                                        key={`deposit-earned-rewards`}
+                                        label={'Earned Rewards'}
+                                        dataTextClassName='flex justify-between items-center font-body py-g1'
+                                        valueClassName={`font-weight-700 body-m text-hi`}
+                                        labelClassName={`body-m text-med`}
+
+                                    />
+                                    {console.log("->>", userInvestments)}
+                                    {(Object.keys(userInvestments?.earnedRewards || {}) || [])?.map((rewardKey, index) => (
+                                        <DataText
+                                            key={`deposit-${index}`}
+                                            label={<div className='flex items-center justify-start gap-g0h'>
+                                                <img src='/assets/Bera.ico' width={16} height={16} alt='vault image' className='rounded-full' />
+                                                {userInvestments?.earnedRewards?.[rewardKey]?.['tokenName'] || '-'}
+                                            </div>}
+                                            value={`${userInvestments?.earnedRewards?.[rewardKey]?.['claimedReward'] || '-'} ${userInvestments?.earnedRewards?.[rewardKey]?.['tokenSymbol'] || ''} `}
+                                            dataTextClassName='flex justify-between items-center font-body py-g1 px-[16px]'
+                                            valueClassName={`font-weight-400 body-xs text-hi`}
+                                            labelClassName={`body-xs text-med font-weight-400`}
+                                        // infoText={item.hasInfo ? item.infoText : undefined}
                                         />
                                     ))}
                                 </div>
                                 <div className='bg-srf-l2 shadow-level2 rounded-rnd-m border border-light w-full'>
                                     <TransactionActionCard />
-
                                 </div>
                             </div>
                         </div>
@@ -268,7 +359,7 @@ export default function MyInvestment() {
                         <div className='col-span-1 scr-s:col-span-6'>
                             <div className='grid grid-cols-1 tab-s:grid-cols-2 gap-g3'>
                                 <div className='col-span-1 '>
-                                    <div ref={chartStrategyCompositionRef} className='w-full h-[300px] tab-s:h-[320px] tab-s:w-[320px] tab-l:h-[200px] tab-l:w-[200px]  scr-s:h-[320px] scr-s:w-[320px] scr-m:h-[360px] scr-m:w-[360px] scr-l:h-[420px] scr-l:w-[420px]' />
+                                    <div ref={chartStrategyCompositionRef} className='w-full h-[300px] tab-s:h-[320px] tab-s:w-[320px] tab-l:h-[200px] tab-l:w-[200px]  scr-s:h-[320px] scr-s:w-[320px] scr-m:h-[320px] scr-m:w-[320px] scr-l:h-[420px] scr-l:w-[420px]' />
                                     <p className='text-center text-hi font-titles title-m pb-g3'>Strategy Composition</p>
                                     <div className='px-g3'>
 
@@ -286,8 +377,8 @@ export default function MyInvestment() {
                                     </div>
                                 </div>
                                 <div className='col-span-1'>
-                                    <div ref={chartTrancheStructureRef} className='w-full  h-[300px] tab-s:h-[320px] tab-s:w-[320px] tab-l:h-[200px] tab-l:w-[200px] scr-s:h-[320px] scr-s:w-[320px]  scr-m:h-[360px] scr-m:w-[360px] scr-l:h-[420px] scr-l:w-[420px]' />
-                                    <p className='text-center text-hi font-titles title-m pb-g3'>Strategy Composition</p>
+                                    <div ref={chartTrancheStructureRef} className='w-full  h-[300px] tab-s:h-[320px] tab-s:w-[320px] tab-l:h-[200px] tab-l:w-[200px] scr-s:h-[320px] scr-s:w-[320px]  scr-m:h-[320px] scr-m:w-[320px] scr-l:h-[420px] scr-l:w-[420px]' />
+                                    <p className='text-center text-hi font-titles title-m pb-g3'>Tranche Structure</p>
                                     <div className='px-g3'>
                                         {strategyInformation?.thickness?.map((item, index) => (
                                             <DataText

@@ -3,9 +3,10 @@ import DynamicTable from './Table';
 import BaseYield from './BaseYield';
 import RewardYield from './RewardYield';
 import { titleize } from 'underscore.string';
+import { getTvlForVaultFromTvlList } from '../../utils/tvl';
 const headers = ['Farm', 'Status', 'TFV', 'Base Yield Tranche', 'Rewards Yield Tranche'];
 
-export default function FarmTable({ data }) {
+export default function FarmTable({ vaults, tvls }) {
     const getHeaders = () => {
         const headerContent = (
             <tr>
@@ -23,7 +24,7 @@ export default function FarmTable({ data }) {
         return headerContent
     }
     const getRowContents = () => {
-        const rowsContent = (data || []).map((row, rowIndex) => (
+        const rowsContent = (vaults || []).map((row, rowIndex) => (
             <tr key={rowIndex} className={`${rowIndex % 2 === 0 ? 'bg-lvl2' : 'bg-lvl2a'} text-hi`}>
                 <td className="py-g1 px-g2 whitespace-nowrap body-s font-body">
                     <div className='flex items-center h-full gap-4'>
@@ -35,7 +36,7 @@ export default function FarmTable({ data }) {
                     {titleize(row.vaultStatus) || '-'}
                 </td>
                 <td className="py-g1 px-g2 whitespace-nowrap body-s font-body text-right">
-                    {row.tfv || '-'}
+                    {getTvlForVaultFromTvlList(tvls, row?.trancheVaultAddress) || '-'}
                 </td>
                 <td className="py-g1 px-g2 whitespace-nowrap body-s font-body">
                     <BaseYield {...{ row, vaultId: row?._id }} tableView={true} />

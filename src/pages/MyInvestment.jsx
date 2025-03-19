@@ -229,15 +229,33 @@ export default function MyInvestment() {
                             <div className='flex justify-between items-center'>
                                 <div className='flex text-hi gap-g1'>
                                     <img src='/assets/Bera.ico' width={48} height={48} alt='vault image' className='rounded-full' />
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="currentColor">
-                                        <path fillRule="evenodd" clipRule="evenodd" d="M44 26L4 26L4 22L44 22L44 26Z" fill="currentColor" fillOpacity="0.87" />
-                                        <path fillRule="evenodd" clipRule="evenodd" d="M44 20L4 20L4 16L44 16L44 20Z" fill="currentColor" fillOpacity="0.87" />
-                                        <path fillRule="evenodd" clipRule="evenodd" d="M44 14L4 14L4 10L44 10L44 14Z" fill="currentColor" fillOpacity="0.87" />
-                                        <path fillRule="evenodd" clipRule="evenodd" d="M44 32L4 32L4 28L44 28L44 32Z" fill="currentColor" fillOpacity="0.87" />
-                                        <path fillRule="evenodd" clipRule="evenodd" d="M44 38L4 38L4 34L44 34L44 38Z" fill="currentColor" fillOpacity="0.87" />
-                                        <path fillRule="evenodd" clipRule="evenodd" d="M44 44L4 44L4 40L44 40L44 44Z" fill="currentColor" fillOpacity="0.87" />
-                                        <path fillRule="evenodd" clipRule="evenodd" d="M44 8L4 8L4 4L44 4L44 8Z" fill="currentColor" fillOpacity="0.87" />
-                                    </svg>
+                                    {vaultType === 'base' ?
+                                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <g id="Icons Unique">
+                                                <g id="Shape">
+                                                    <path fillRule="evenodd" clipRule="evenodd" d="M11 20V14H13V20H11Z" fillOpacity="0.87" />
+                                                    <path fillRule="evenodd" clipRule="evenodd" d="M14 20V6H16V20H14Z" fillOpacity="0.87" />
+                                                    <path fillRule="evenodd" clipRule="evenodd" d="M17 20V8H19V20H17Z" fillOpacity="0.87" />
+                                                    <path fillRule="evenodd" clipRule="evenodd" d="M8 20V12H10V20H8Z" fillOpacity="0.87" />
+                                                    <path fillRule="evenodd" clipRule="evenodd" d="M5 20V10H7V20H5Z" fillOpacity="0.87" />
+                                                    <path fillRule="evenodd" clipRule="evenodd" d="M2 20V16H4V20H2Z" fillOpacity="0.87" />
+                                                    <path fillRule="evenodd" clipRule="evenodd" d="M20 20V4H22V20H20Z" fillOpacity="0.87" />
+                                                </g>
+                                            </g>
+                                        </svg>
+                                        :
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="currentColor">
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M44 26L4 26L4 22L44 22L44 26Z" fill="currentColor" fillOpacity="0.87" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M44 20L4 20L4 16L44 16L44 20Z" fill="currentColor" fillOpacity="0.87" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M44 14L4 14L4 10L44 10L44 14Z" fill="currentColor" fillOpacity="0.87" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M44 32L4 32L4 28L44 28L44 32Z" fill="currentColor" fillOpacity="0.87" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M44 38L4 38L4 34L44 34L44 38Z" fill="currentColor" fillOpacity="0.87" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M44 44L4 44L4 40L44 40L44 44Z" fill="currentColor" fillOpacity="0.87" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M44 8L4 8L4 4L44 4L44 8Z" fill="currentColor" fillOpacity="0.87" />
+                                        </svg>
+                                    }
+
+
                                 </div>
                                 <button className='border-2 border-action-primary-default hover:border-action-primary-hover rounded-rnd-m px-s tab-l:px-m ht-m font-body text-action-primary-default hover:text-action-primary-hover ' onClick={() => setVaultType(vaultType === 'base' ? 'rewards' : 'base')}>
                                     {getVaultButtonDisplayText()}

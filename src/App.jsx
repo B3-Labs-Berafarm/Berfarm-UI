@@ -1,33 +1,38 @@
-import { useState } from 'react'
+import { useState, lazy, Suspense } from 'react'
 import './App.css'
-import Home from './pages/Home'
 import Test from './pages/Test'
-import MyFarms from './pages/MyFarms'
 import BannerGrid from './pages/BannerGrid'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import MyHarvest from './pages/MyHarvest'
-import MyInvestment from './pages/MyInvestment'
-import NotFound from './pages/NotFound'
+
+const Home = lazy(() => import('./pages/Home'));
+const MyHarvest = lazy(() => import('./pages/MyHarvest'));
+const MyInvestment = lazy(() => import('./pages/MyInvestment'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+const MyFarms = lazy(() => import('./pages/MyFarms'));
+
+const Loader = () => (
+  <div style={{ textAlign: 'center' }}>
+    <div className="spinner"></div>
+  </div>
+);
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className=" h-screen" >
-      {/* <Router> */}
-      <Routes>
-        <Route path="/" element={<MyFarms />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/farms" element={<MyFarms />} />
-        <Route path="/harvest" element={<MyHarvest />} />
-        <Route path="/investment/:vaultId" element={<MyInvestment />} />
-        <Route path="/" element={<Navigate to="/" />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      {/* </Router> */}
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<MyFarms />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/farms" element={<MyFarms />} />
+          <Route path="/harvest" element={<MyHarvest />} />
+          <Route path="/investment/:vaultId" element={<MyInvestment />} />
+          <Route path="/" element={<Navigate to="/" />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
 
-
-      {/* <Test /> */}
       {/* <Home /> */}
       {/* <BannerGrid /> */}
     </div>

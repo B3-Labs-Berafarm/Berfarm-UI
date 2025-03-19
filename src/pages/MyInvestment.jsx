@@ -360,7 +360,7 @@ export default function MyInvestment() {
                                     ))}
                                 </div>
                                 <div className='bg-srf-l2 shadow-level2 rounded-rnd-m border border-light w-full'>
-                                    <TransactionActionCard />
+                                    <TransactionActionCard vaultInformation={vaultInformation} vaultType={vaultType} />
                                 </div>
                             </div>
                         </div>

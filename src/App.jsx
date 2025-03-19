@@ -7,6 +7,7 @@ import BannerGrid from './pages/BannerGrid'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import MyHarvest from './pages/MyHarvest'
 import MyInvestment from './pages/MyInvestment'
+import NotFound from './pages/NotFound'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -21,6 +22,7 @@ function App() {
         <Route path="/harvest" element={<MyHarvest />} />
         <Route path="/investment/:vaultId" element={<MyInvestment />} />
         <Route path="/" element={<Navigate to="/" />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       {/* </Router> */}
 

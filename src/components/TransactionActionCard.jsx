@@ -12,7 +12,7 @@ const categories = [
     },
 ]
 
-export default function TransactionActionCard() {
+export default function TransactionActionCard({ vaultInformation, vaultType }) {
     const [selectedIndex, setSelectedIndex] = useState(0)
 
     return (
@@ -36,10 +36,10 @@ export default function TransactionActionCard() {
                     </TabList>
                     <TabPanels className="">
                         <TabPanel key={"Deposit"} className="rounded-b-rnd-m  py-l px-l">
-                            <Deposit />
+                            <Deposit vaultInformation={vaultInformation} vaultType={vaultType} />
                         </TabPanel>
                         <TabPanel key={"Withdraw"} className="rounded-b-rnd-m py-l px-l">
-                            <Withdraw />
+                            <Withdraw vaultInformation={vaultInformation} vaultType={vaultType} />
                         </TabPanel>
 
                     </TabPanels>

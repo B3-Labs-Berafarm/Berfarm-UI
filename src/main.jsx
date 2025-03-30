@@ -29,20 +29,23 @@ import './index.css'
 import App from './App.jsx'
 import "./styles/global.css"
 import ErrorBoundary from './components/ErrorBoundary.jsx';
+import { ThemeProvider } from './contexts/ThemeContext.jsx';
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ErrorBoundary>
-      <WagmiProvider config={config}>
-        <QueryClientProvider client={queryClient}>
-          <RainbowKitProvider>
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
-          </RainbowKitProvider>
-        </QueryClientProvider>
-      </WagmiProvider>
+      <ThemeProvider>
+        <WagmiProvider config={config}>
+          <QueryClientProvider client={queryClient}>
+            <RainbowKitProvider>
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+            </RainbowKitProvider>
+          </QueryClientProvider>
+        </WagmiProvider>
+      </ThemeProvider>
     </ErrorBoundary>
   </StrictMode>,
 )

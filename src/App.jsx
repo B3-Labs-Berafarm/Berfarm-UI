@@ -9,6 +9,7 @@ const MyHarvest = lazy(() => import('./pages/MyHarvest'));
 const MyInvestment = lazy(() => import('./pages/MyInvestment'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const MyFarms = lazy(() => import('./pages/MyFarms'));
+const NewHome = lazy(() => import('./pages/NewHome'));
 
 const Loader = () => (
   <div style={{ textAlign: 'center' }}>
@@ -23,17 +24,19 @@ function App() {
     <div className=" h-screen" >
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/" element={<MyFarms />} />
+          <Route path="/" element={<NewHome />} />
+          <Route path="*" element={<NotFound />} />
+          {/* <Route path="/" element={<MyFarms />} />
           <Route path="/home" element={<Home />} />
           <Route path="/farms" element={<MyFarms />} />
           <Route path="/harvest" element={<MyHarvest />} />
           <Route path="/investment/:vaultId" element={<MyInvestment />} />
           <Route path="/" element={<Navigate to="/" />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} /> */}
         </Routes>
+
       </Suspense>
 
-      {/* <Home /> */}
       {/* <BannerGrid /> */}
     </div>
   )

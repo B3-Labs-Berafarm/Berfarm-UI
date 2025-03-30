@@ -95,7 +95,9 @@
     --text-inv-hi: var(--s98);
     /* Border Color */
     --border-light: var(--s5);
+    --border-low: var(--a90);
     --border-def: var(--s5);
+    --border-acc: var(--p30);
     /* Add GradientText Colors */
     --text-invert-accent: var(--p70);
     --text-invert-high: var(--p98);
@@ -114,6 +116,7 @@
     --opacity-85: 0.85;
     --opacity-87: 0.87;
     --opacity-75: 0.75;
+    --opacity-66: 0.66;
     --opacity-50: 0.5;
     --opacity-25: 0.25;
     --opacity-15: 0.15;
@@ -149,6 +152,7 @@
       --g30: 64 76 0;
       /* Accent Colors*/
       --a5: 25 15 0;
+      --a30: 93 66 0;
       --a40: 123 88 0;
       --b40: 229 232 135;
       --b5: 17 18 0;
@@ -205,6 +209,9 @@
       --nav-item: var(--s98);
 
       --text-low: var(--s98);
+      /* border */
+      --border-low: var(--a30);
+      --border-acc: var(--p80);
     }
   }
 }

@@ -235,14 +235,14 @@ module.exports = {
       },
       boxShadow: {
         level1: [
-          '0px 4px 10px 0px rgba(15, 18, 2, 0.09)',
-          '0px 1px 20px 0px rgba(15, 18, 2, 0.06)',
-          '0px 2px 8px 0px rgba(15, 18, 2, 0.12)',
+          '0px 1px 6px 0px rgba(20, 10, 51, 0.07)',
+          '0px 2px 2px 0px rgba(20, 10, 51, 0.03)',
+          '0px 1px 2px 0px rgba(20, 10, 51, 0.05)',
         ],
         level2: [
-          '0px 6px 20px 0px rgba(20, 10, 51, 0.09)',
-          '0px 1px 36px 0px rgba(15, 18, 2, 0.06)',
-          '0px 3px 10px 0px rgba(15, 18, 2, 0.12)',
+          '0px 4px 10px 0px rgba(20, 10, 51, 0.05)',
+          '0px 1px 20px 0px rgba(20, 10, 51, 0.03)',
+          '0px 2px 8px 0px rgba(20, 10, 51, 0.07)',
         ],
         level3: [
           '0px 6px 20px 0px rgba(20, 10, 51, 0.05)',
@@ -348,6 +348,11 @@ module.exports = {
           suc: 'rgb(var(--mean-suc)/ var(--opacity-96))',
         },
       },
+      borderColor: {
+        low: 'rgb(var(--border-low)/ var(--opacity-15))',
+        med: 'rgb(var(--border-low)/ var(--opacity-25))',
+        acc: 'rgb(var(--border-acc)/ var(--opacity-66))',
+      }
     },
   },
   plugins: [
@@ -485,8 +490,8 @@ module.exports = {
         '.body-dg': {
           '@apply text-fb4 tab-s:text-fb5 tab-l:text-fb5 scr-s:text-fb5 scr-m:text-fb7 scr-l:text-ft8 font-weight-400': '',
         },
-        '.body-dg': {
-          '@apply text-fb4 tab-s:text-fb5 tab-l:text-fb5 scr-s:text-fb5 scr-m:text-fb7 scr-l:text-ft8 font-weight-400': '',
+        '.d2': {
+          '@apply text-f8 tab-s:text-f10 tab-l:text-f11 scr-s:text-f12 scr-m:text-f12 scr-l:text-f13': '',
         },
         '.body-l': {
           '@apply text-fb5 scr-l:text-fb6 font-weight-400': '',

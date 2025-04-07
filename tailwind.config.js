@@ -493,6 +493,9 @@ module.exports = {
         '.d2': {
           '@apply text-f8 tab-s:text-f10 tab-l:text-f11 scr-s:text-f12 scr-m:text-f12 scr-l:text-f13': '',
         },
+        '.d1': {
+          '@apply text-f8 tab-s:text-f8 tab-l:text-f10 scr-s:text-f12 scr-m:text-f12 scr-l:text-f13': '',
+        },
         '.body-l': {
           '@apply text-fb5 scr-l:text-fb6 font-weight-400': '',
         },

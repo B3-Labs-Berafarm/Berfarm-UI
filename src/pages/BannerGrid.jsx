@@ -72,40 +72,50 @@ const BannerGrid = () => {
 
     return (
         <>
-        <div className="relative w-full">
-            {/* Base banner image */}
-            <div className="relative w-full h-[100vh] aspect-[3/1] ">
-                <img
-                    src={imageUrl}
-                    alt="Village Banner"
-                    className="w-full h-full object-contain" />
+            <div className="relative w-full">
+                {/* Base banner image */}
+                <div className="relative w-full h-[100vh] ">
+                    <img
+                        src={imageUrl}
+                        alt="Village Banner"
+                        className="w-full h-full object-cover" />
 
-                {/* Grid overlay for hover areas */}
-                <div className="absolute inset-0">
+                    {/* Grid overlay for hover areas */}
+                    <div className="absolute inset-0">
 
-                    {
+                        {
 
 
-                        < div
-                            key={areas[0].id}
-                            className={`relative cursor-pointer ${areas[0].className}`}
-                            onMouseEnter={() => setHoveredArea(areas[0].id)}
-                            onMouseLeave={() => setHoveredArea(null)}
-                        >
-                            {/* Light effect overlay */}
-                            <div
-                                className={` h-[60vh] w-[80vh] border-2 border-black absolute inset-0 transition-opacity duration-300 left-[calc(50%-10vh)] -translate-x-1/2 ${hoveredArea === areas[0].id ? 'opacity-100' : 'opacity-100'}`}
+                            < div
+                                key={areas[0].id}
+                                className={`relative cursor-pointer ${areas[0].className}`}
+                                onMouseEnter={() => setHoveredArea(areas[0].id)}
+                                onMouseLeave={() => setHoveredArea(null)}
                             >
-                                <img
-                                    src={areas[0].lightImage}
-                                    alt={`${areas[0].name} highlight`}
-                                    className="w-full h-full object-contain" />
+                                {/* Light effect overlay */}
+                                {/* <div
+                                    className={` h-[60vh] w-[80vh] border-2 border-black absolute inset-0 transition-opacity duration-300 left-[calc(50%-10vh)] -translate-x-1/2 ${hoveredArea === areas[0].id ? 'opacity-100' : 'opacity-100'}`}
+                                >
+                                    <img
+                                        src={areas[0].lightImage}
+                                        alt={`${areas[0].name} highlight`}
+                                        className="w-full h-full object-contain" />
+                                </div> */}
+                                <div className="h-[18.75vw] w-[18.75vw] scr-l:h-[30vh] scr-l:w-[30vh] absolute inset-0 flex items-center justify-center group-hover:block opacity-100 group-hover:opacity-100 transition-opacity duration-300 left-[calc(50vw-37.25vw)] top-[calc(50vh-31.25vw)]">
+                                    {/* Video that appears on hover */}
+                                    <video
+                                        className="w-full h-full object-cover"
+                                        src="/assets/video-assets/3 Animation - Smoke33.webm"
+                                        autoPlay
+                                        loop
+                                        muted
+                                    />
+                                </div>
                             </div>
-                        </div>
 
 
-                    }
-                    {/* {areas.map((area) => (
+                        }
+                        {/* {areas.map((area) => (
                         <div
                             key={area.id}
                             className={`relative cursor-pointer ${area.className}`}
@@ -123,9 +133,9 @@ const BannerGrid = () => {
                             </div>
                         </div>
                     ))} */}
+                    </div>
                 </div>
-            </div>
-        </div > <Navbar /></>
+            </div > <Navbar dapp={true} /></>
     );
 };
 

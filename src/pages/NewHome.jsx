@@ -6,12 +6,12 @@ import Footer from '../components/Footer';
 import HomePageNavbar from '../components/HomeNavbar';
 import { Link } from 'react-router-dom';
 export default function NewHome() {
-    const [imageUrl, setImageUrl] = useState("/assets/bg/wood.png")
+    const [imageUrl, setImageUrl] = useState("/assets/final-assets/background_tiling.webp")
     const { isDarkMode } = useTheme();
     const containerRef = useRef(null);
     const [containerWidth, setContainerWidth] = useState(0);
     useEffect(() => {
-        const url = !isDarkMode ? '/assets/bg/plaster.png' : "/assets/bg/wood.png";
+        const url = !isDarkMode ? '/assets/bg/plaster.png' : "/assets/final-assets/background_tiling.webp";
         setImageUrl(url)
     }, [isDarkMode]);
     useEffect(() => {
@@ -27,31 +27,7 @@ export default function NewHome() {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-    const [bgImageUrl, setBgImageUrl] = useState("/assets/abc/0 Main UI - Fallback.webp");
-    const updateImageUrl = () => {
-        const _aspectRatio = window.innerWidth / window.innerHeight
-        // setAspectRatio((prev) => ({ aspectRatio: _aspectRatio }));
-        console.log({ innerWidth: window.innerWidth, innerHeight: window.innerHeight, aspectRatio: _aspectRatio })
-        if (_aspectRatio >= 1.6) {
-            setImageUrl("/assets/abc/0 Main UI - Fallback.webp");
-        } else {
-            setImageUrl("/assets/abc/0 Main UI - Fallback Portrait.webp");
-        }
-    };
 
-
-    useEffect(() => {
-        // Update the image URL when the component is mounted or resized
-        updateImageUrl();
-
-        // Add event listener to handle resizing
-        window.addEventListener("resize", updateImageUrl);
-
-        // Clean up event listener on unmount
-        return () => {
-            window.removeEventListener("resize", updateImageUrl);
-        };
-    }, []); // Empty dependency array to run this effect only once on mount
 
     useEffect(() => {
         const scrollContainer = containerRef.current;
@@ -72,39 +48,27 @@ export default function NewHome() {
 
     return (
         <div key="my-farms" className='flex flex-col bg-srf-base'>
-            <div className='cover-img1 flex justify-end items-center'>
+            <div className='cover-img1 flex justify-end items-start tab-s:items-center'>
                 <HomePageNavbar dapp={true} />
-                <div className='container flex justify-start items-start my-[60px] scr-l:my-[120px] flex-col'>
-                    <div className='text-acc font-body lbl-s font-weight-500 uppercase'>Built on Berachain</div>
-                    <div className='text-acc d2 font-weight-800 font-headings mob-l:-mb-2 hidden mob-l:block'>Effortless yield</div>
-                    <div className='text-acc d2 font-weight-800 font-headings mob-l:-mt-2 hidden mob-l:block'>farming for lazy beras</div>
-                    <div className='text-acc d2 font-weight-800 font-headings block mob-l:hidden tracking-[-1.35px]'>Effortless yield farming for lazy beras</div>
-                    <div className='text-hi body-l font-weight-400 font-body tab-l:max-w-[50%]'>BeraFarm transforms complex DeFi strategies into simplified, high-performing yield farms.</div>
-                    <Link to={'https://www.berafarm.com/'} target='blank'>
-                        <button className='bg-action-primary-default hover:bg-action-primary-hover border-[3px] border-low text-hi px-l h-[48px] shadow-level2 rounded-rnd-l mt-g4 backdrop:blur-[1.5px] font-body font-weight-500 cursor-pointer'>Start Farming</button>
-                    </Link>
+                <div className='container grid grid-cols-1 tab-s:grid-cols-2 py-[80px] scr-l:my-[120px]'>
+                    <div className='col-span-1 tab-s:col-start-2'>
+                        <div className='text-acc font-body lbl-s font-weight-500 uppercase'>Built on Berachain</div>
+                        {/* <div className='text-acc d2 font-weight-800 font-headings mob-l:-mb-2 hidden mob-l:block'>Effortless yield</div>
+                        <div className='text-acc d2 font-weight-800 font-headings mob-l:-mt-2 hidden mob-l:block'>farming for lazy beras</div> */}
+                        <div className='text-acc d1 font-weight-800 font-headings tracking-[-1.35px] scr-m:tracking-[-2.565px] scr-l:tracking-[-3.105px] scr-l:max-w-[90%]'>Effortless yield farming for lazy beras</div>
+                        <div className='text-hi body-l font-weight-400 font-body tab-l:max-w-[70%]'>BeraFarm transforms complex DeFi strategies into simplified, high-performing yield farms.</div>
+                        <Link to={'https://www.berafarm.com/'} target='blank'>
+                            <button className='bg-action-primary-default hover:bg-action-primary-hover border-[3px] border-low text-hi px-l h-[48px] shadow-level2 rounded-rnd-l mt-g4 backdrop:blur-[1.5px] font-body font-weight-500 cursor-pointer'>Start Farming</button>
+                        </Link>
+                    </div>
                 </div>
             </div>
             {/* Use inline style for dynamic background image instead of class string interpolation */}
-            <div className=" relative pb-[160px] bg-[lightgray] bg-repeat bg-[length:380px_250px] bg-[position:0%_0%]"
+            <div className="relative bg-[lightgray] bg-repeat bg-[length:380px_250px] bg-[position:0%_0%]"
                 style={{ backgroundImage: `url(${imageUrl})` }}>
                 <div className='pt-[160px] text-center'>
-                    <motion.div initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{
-                            duration: 0.6,
-                            delay: 0.25,
-                            ease: "easeInOut",
-                            type: "tween",
-                        }} className='text-acc font-body lbl-s font-weight-500 uppercase tracking-[3px]'>Multi-strategy Farms</motion.div>
-                    <motion.div initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{
-                            duration: 0.6,
-                            delay: 0.25,
-                            ease: "easeInOut",
-                            type: "tween",
-                        }} className='text-acc font-headings font-weight-800 d2 tracking-[-2.565px]'>Stack yields the BeraFarm way</motion.div>
+                    <TopTitle text='Multi-strategy Farms' />
+                    <MainTitle text='Stack yields the BeraFarm way' />
                     <motion.div initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         transition={{
@@ -222,29 +186,16 @@ export default function NewHome() {
                 </div>
                 {/*  */}
                 <div className='pt-[160px] text-center'>
-                    <motion.div initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{
-                            duration: 0.6,
-                            delay: 0.25,
-                            ease: "easeInOut",
-                            type: "tween",
-                        }} className='text-acc font-headings font-weight-800 d2 tracking-[-2.565px] -mb-16'>Maximise Yield Across</motion.div>
-                    <motion.div initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{
-                            duration: 0.6,
-                            delay: 0.25,
-                            ease: "easeInOut",
-                            type: "tween",
-                        }} className='text-acc font-headings font-weight-800 d2 tracking-[-2.565px] -mt-16'>Multiple Assets</motion.div>
+                    <TopTitle text='Multi-Asset farms' />
+                    <MainTitle text='Enjoy pawsitive yields' />
+                    <MainTitle text='across multiple crops' className='-mt-[1rem] scr-s::-mt-[2rem]' />
                     <div className='pt-[48px] flex gap-g4 w-full'>
                         <div className="scroll-container  gap-g2" ref={containerRef} style={{ width: containerWidth }}>
                             {CARD_DETAILS.map((item, index) => (
                                 <><div key={index} className='relative flex flex-col bg-srf-l2 px-g4 py-g3 w-[280px] flex-shrink-0  border border-med shadow-level2 backdrop:blur-[3px] rounded-[16px]'>
                                     <div className='flex justify-start items-center gap-g1 pb-g2'>
                                         <img src='/assets/Bera.ico' width={32} height={32} alt='vault image' className='rounded-full' />
-                                        <p className='text-hi font-titles font-weight-800 tracking-[-0.63px]'>Assest</p>
+                                        <p className='text-hi font-titles font-weight-800 tracking-[-0.63px]'>Asset</p>
                                     </div>
                                     {item.vault.map((info) => (
                                         <div className='flex justify-between items-center pt-g0h'>
@@ -263,18 +214,14 @@ export default function NewHome() {
                                 </>
                             ))}
                         </div>
-
                     </div>
+                    <Link to={'https://www.berafarm.com/'} target='blank'>
+                        <button className='bg-action-primary-default hover:bg-action-primary-hover border-[3px] border-low text-hi hover:text-acc px-l h-[48px] shadow-level2 rounded-rnd-l mt-g4 backdrop:blur-[1.5px] font-body font-weight-500 cursor-pointer'>Start Farming</button>
+                    </Link>
                 </div>
                 <div className='pt-[160px] text-center'>
-                    <motion.div initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{
-                            duration: 0.6,
-                            delay: 0.25,
-                            ease: "easeInOut",
-                            type: "tween",
-                        }} className='text-acc font-headings font-weight-800 d2 tracking-[-2.565px]'>The Berafarm Advantage</motion.div>
+                    <TopTitle text='farm smarter' />
+                    <MainTitle text='The Berafarm Advantage' />
                     <div className='container px-[16px] tab-s:px-[24px] tab-l:px-[48px] scr-m:px-90 scr-l:px-[240px] grid grid-cols-1 tab-s:grid-cols-2 pt-[48px] gap-g3'>
 
                         {BERAFARM_ADVANTAGES.map(({ imageUrl, heading, description }, index) => (
@@ -297,11 +244,58 @@ export default function NewHome() {
                         ))}
                     </div>
                 </div>
+                {/*  */}
+                <div className='py-[160px] text-center'>
+                    <MainTitle text='Ecosystem Partner' />
+                    <div className='container px-[16px] tab-s:px-[24px] tab-l:px-[48px] scr-m:px-90 scr-l:px-[240px] pt-[48px] grid grid-cols-12 justify-items-center scr-l:justify-items-start gap-g2 tab-s:gap-g4'>
+                        {PARTNER_LOGOS.map((url, index) => (
+                            <motion.img initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{
+                                    duration: 0.6,
+                                    delay: 0.25,
+                                    ease: "easeInOut",
+                                    type: "tween",
+                                }}
+                                key={index} className={`max-w-[120px] max-h-[60px] tab-s:max-w-[220px] tab-s:max-h-[120px] col-span-6 tab-s:col-span-6 tab-l:col-span-4 scr-l:tab-l:col-span-3`}
+                                src={url} />
+                        ))}
+                    </div>
+                </div>
+                <div className='border-t container'></div>
+                <Footer navClassname='bg-transparent' />
+
             </div>
-            <Footer />
         </div >
     );
 }
+
+const TopTitle = ({ text = '' }) => {
+    return (
+        <motion.div initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{
+                duration: 0.6,
+                delay: 0.25,
+                ease: "easeInOut",
+                type: "tween",
+            }} className='text-acc font-body lbl-s font-weight-500 uppercase tracking-[3px]'>{text}</motion.div>
+    )
+}
+
+const MainTitle = ({ text = '', className = '' }) => {
+    return (
+        <motion.div initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{
+                duration: 0.6,
+                delay: 0.25,
+                ease: "easeInOut",
+                type: "tween",
+            }} className={`text-acc font-headings font-weight-800 d2 tracking-[-2.565px] ${className}`}>{text}</motion.div>
+    )
+}
+
 
 const InfoText = ({ svg, heading, description }) => {
     return (
@@ -334,22 +328,22 @@ const CardInfo = ({ svg, heading, description }) => {
 
 const BERAFARM_ADVANTAGES = [
     {
-        imageUrl: '/assets/panda/1.jpeg',
+        imageUrl: '/assets/final-assets/bera_with_honey_boxes.webp',
         heading: 'Simplified Yield Optimization',
         description: 'BeraFarm consolidates multiple high-performing strategies into unified farms with single-click entry/exit, eliminating the complexity of managing separate positions.'
     },
     {
-        imageUrl: '/assets/panda/2.jpeg',
+        imageUrl: '/assets/final-assets/bera_with_honey_vat.webp',
         heading: 'Active Asset Management',
         description: 'The platform continuously monitors, re-balances, and reinvests yields to maximize returns without requiring constant management from users.'
     },
     {
-        imageUrl: '/assets/panda/3.jpeg',
+        imageUrl: '/assets/final-assets/bera_with_jars.webp',
         heading: 'Diversification',
         description: 'Spread your assets across a variety of DeFi strategies to reduce risk and optimise returns.'
     },
     {
-        imageUrl: '/assets/panda/4.jpeg',
+        imageUrl: '/assets/final-assets/bera_with_treasure.webp',
         heading: 'Unlocking $BGT\'s Full Potential',
         description: 'BeraFarm converts restricted $BGT into liquid $f-BGT, maintaining governance utility while enabling broader DeFi applications.'
     },
@@ -428,4 +422,14 @@ const CARD_DETAILS = [
             { label: 'Fixed Yield', value: '23M' }
         ]
     }
+]
+
+const PARTNER_LOGOS = [
+    '/assets/final-assets/partner_logos/Kodiak.png',
+    '/assets/final-assets/partner_logos/Dolomite.svg',
+    '/assets/final-assets/partner_logos/Burrbear.png',
+    '/assets/final-assets/partner_logos/Beradrome.svg',
+    '/assets/final-assets/partner_logos/Beratrax.png',
+    '/assets/final-assets/partner_logos/Infrared.svg',
+    '/assets/final-assets/partner_logos/Beefy.svg',
 ]

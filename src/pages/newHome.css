@@ -14,78 +14,43 @@
       rgba(16, 18, 0, 0.15) 65%,
       rgba(16, 18, 0, 0) 100%
     ),
-    url("/assets/new_home/default.png");
+    url("/assets/final-assets/default.png");
   background-size: cover;
   background-position: center;
 }
 
 @media (max-width: 767px) {
   .cover-img1 {
-    aspect-ratio: 0.66;
-    background-image: linear-gradient(
-        90deg,
-        rgba(16, 18, 0, 0.8) 0%,
-        rgba(16, 18, 0, 0.4) 45%,
-        rgba(16, 18, 0, 0.15) 65%,
-        rgba(16, 18, 0, 0) 100%
-      ),
-      url("/assets/new_home/phone.png");
+    aspect-ratio: 0.58;
+    background-image: url("/assets/final-assets/mm.png");
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .cover-img1 {
     aspect-ratio: 1.37;
-    background-image: linear-gradient(
-        90deg,
-        rgba(16, 18, 0, 0.8) 0%,
-        rgba(16, 18, 0, 0.4) 45%,
-        rgba(16, 18, 0, 0.15) 65%,
-        rgba(16, 18, 0, 0) 100%
-      ),
-      url("/assets/new_home/ipads.png");
+    background-image: url("/assets/final-assets/ipads.png");
   }
 }
 
 @media (min-width: 992px) and (max-width: 1279px) {
   .cover-img1 {
     aspect-ratio: 1.47;
-    background-image: linear-gradient(
-        90deg,
-        rgba(16, 18, 0, 0.8) 0%,
-        rgba(16, 18, 0, 0.4) 45%,
-        rgba(16, 18, 0, 0.15) 65%,
-        rgba(16, 18, 0, 0) 100%
-      ),
-      url("/assets/new_home/ipad-pro.png");
+    background-image: url("/assets/final-assets/ipad-pro.png");
   }
 }
 
 @media (min-width: 1280px) and (max-width: 1439px) {
   .cover-img1 {
     aspect-ratio: 3/2;
-    background-image: linear-gradient(
-        90deg,
-        rgba(16, 18, 0, 0.8) 0%,
-        rgba(16, 18, 0, 0.4) 45%,
-        rgba(16, 18, 0, 0.15) 65%,
-        rgba(16, 18, 0, 0) 100%
-      ),
-      url("/assets/new_home/desktop-small.png");
+    background-image: url("/assets/final-assets/desktop-small.png");
   }
 }
 
 @media (min-width: 1440px) and (max-width: 1919px) {
   .cover-img1 {
     aspect-ratio: 2/1;
-    background-image: linear-gradient(
-        90deg,
-        rgba(16, 18, 0, 0.8) 0%,
-        rgba(16, 18, 0, 0.4) 45%,
-        rgba(16, 18, 0, 0.15) 65%,
-        rgba(16, 18, 0, 0) 100%
-      ),
-      url("/assets/new_home/macbook.png");
+    background-image: url("/assets/final-assets/macbook.png");
   }
 }
 
@@ -93,13 +58,14 @@
 @media (min-width: 1920px) {
   .cover-img1 {
     aspect-ratio: 2/1;
-    background-image: linear-gradient(
+    background-image: url("/assets/final-assets/desktop-large.png");
+  }
+}
+
+/* linear-gradient(
         90deg,
         rgba(16, 18, 0, 0.8) 0%,
         rgba(16, 18, 0, 0.4) 45%,
         rgba(16, 18, 0, 0.15) 65%,
         rgba(16, 18, 0, 0) 100%
-      ),
-      url("/assets/new_home/large-desktop.png");
-  }
-}
+      ), */

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Footer() {
+export default function Footer({ navClassname = '' }) {
     return (
-        <div className='bg-srf-l4 py-48'>
+        <div className={`bg-srf-l4 py-48 ${navClassname}`}>
             <div className='grid grid-cols-1 tab-s:grid-cols-2 tab-l:grid-cols-3 container justify-items-center-'>
                 <div className='text-brand-main flex flex-col gap-g2'>
                     <svg width={"156"} height={"30"} viewBox="0 0 312 60" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -37,13 +37,15 @@ export default function Footer() {
                     <div className='flex flex-col space-y-g1'>
                         <p className='title-xs text-med font-weight-800 font-titles text-center'>Community</p>
                         <div className='flex gap-g1'>
-                            <Link className='body-xs font-body text-med'
+                            {/* <Link className='body-xs font-body text-med'
                                 to="https://discord.gg/4MaTYru9"
-                                target="_blank">
+                                target="_blank"> */}
+                            <span className='body-xs font-body text-med cursor-not-allowed'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M19.0002 6.25C17.7502 5.62 16.3702 5.25 14.8702 5C14.7402 5.25 14.4902 5.75 14.3702 6C12.8702 5.75 11.2402 5.75 9.74023 6C9.61023 5.62 9.36023 5.25 9.24023 5C7.86023 5.25 6.48023 5.63 5.11023 6.25C2.48023 10.13 1.73023 14.02 2.10023 17.65C3.85023 18.9 5.48023 19.65 7.11023 20.16H7.24023C7.62023 19.66 7.99023 19.03 8.24023 18.53V18.4C7.74023 18.15 7.24023 17.9 6.74023 17.65V17.52C6.87023 17.39 6.99023 17.39 6.99023 17.27C10.2502 18.77 13.8802 18.77 17.0102 17.27C17.1402 17.4 17.2602 17.4 17.2602 17.52V17.65C16.7602 17.9 16.2602 18.15 15.7602 18.4V18.53C16.0102 19.16 16.3902 19.66 16.7602 20.16H16.8902C18.5202 19.66 20.1502 18.91 21.9002 17.65C22.4002 13.39 21.2702 9.63 19.0202 6.25H19.0002ZM8.60023 15.39C7.60023 15.39 6.85023 14.51 6.85023 13.39C6.85023 12.27 7.60023 11.39 8.60023 11.39C9.60023 11.39 10.3502 12.27 10.3502 13.39C10.4802 14.52 9.60023 15.39 8.60023 15.39ZM15.3602 15.39C14.3602 15.39 13.6102 14.51 13.6102 13.39C13.6102 12.27 14.3602 11.39 15.3602 11.39C16.3602 11.39 17.2402 12.27 17.1102 13.39C17.1102 14.52 16.3602 15.39 15.3602 15.39Z" fillOpacity="0.66" />
                                 </svg>
-                            </Link>
+                            </span>
+                            {/* </Link> */}
                             <Link className='body-xs font-body text-med'
                                 to="https://t.me/realBeraFarm"
                                 target="_blank">
@@ -64,6 +66,7 @@ export default function Footer() {
                 </div>
                 {/* <div>3</div> */}
             </div>
+            <div className='text-center text-med body-s font-body font-weight-400 tracking-[0.06px] pt-g5'>© 2025 Berafarm All Rights Reserved</div>
         </div>
     )
 }

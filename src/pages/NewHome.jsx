@@ -57,7 +57,7 @@ export default function NewHome() {
                         <div className='text-acc d2 font-weight-800 font-headings mob-l:-mt-2 hidden mob-l:block'>farming for lazy beras</div> */}
                         <div className='text-acc d1 font-weight-800 font-headings tracking-[-1.35px] scr-m:tracking-[-2.565px] scr-l:tracking-[-3.105px] scr-l:max-w-[90%]'>Effortless yield farming for lazy beras</div>
                         <div className='text-hi body-l font-weight-400 font-body tab-l:max-w-[70%]'>BeraFarm transforms complex DeFi strategies into simplified, high-performing yield farms.</div>
-                        <Link to={'https://www.berafarm.com/'} target='blank'>
+                        <Link to={'https://www.app.berafarm.com'} target='blank'>
                             <button className='bg-action-primary-default hover:bg-action-primary-hover border-[3px] border-low text-hi px-l h-[48px] shadow-level2 rounded-rnd-l mt-g4 backdrop:blur-[1.5px] font-body font-weight-500 cursor-pointer'>Start Farming</button>
                         </Link>
                     </div>
@@ -215,7 +215,7 @@ export default function NewHome() {
                             ))}
                         </div>
                     </div>
-                    <Link to={'https://www.berafarm.com/'} target='blank'>
+                    <Link to={'https://www.app.berafarm.com/'} target='blank'>
                         <button className='bg-action-primary-default hover:bg-action-primary-hover border-[3px] border-low text-hi hover:text-acc px-l h-[48px] shadow-level2 rounded-rnd-l mt-g4 backdrop:blur-[1.5px] font-body font-weight-500 cursor-pointer'>Start Farming</button>
                     </Link>
                 </div>

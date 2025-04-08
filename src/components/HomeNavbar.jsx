@@ -182,7 +182,7 @@ function NavbarLargerScreen({ dapp, isDarkMode }) {
                         {getLogo(isDarkMode)}
                     </a>
                     <div className="space-x-6 flex justify-end items-center">
-                        <Link to={'https://www.berafarm.com/'} target='blank'>
+                        <Link to={'https://www.app.berafarm.com/'} target='blank'>
                             <button className='h-[36px] tab-s:h-48 px-g3 border-2 border-acc rounded-rnd-l text-acc font-body lbl-s tab-s:lbl-l font-weight-500 hover:bg-action-primary-hover'>Launch App</button>
                         </Link>
                     </div>

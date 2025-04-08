@@ -18,8 +18,8 @@ export default function FarmCard({ keyValue, vaultName, vaultStatus, units, rewa
                 <div className='font-titles title-l font-weight-800 text-hi'>{getTvlForVaultFromTvlList(tvls, trancheVaultAddress) || '-'}</div>
             </div>
             <div className='flex flex-col space-y-g1'>
-                <BaseYield {...{ base_apr, vaultId }} />
-                <RewardYield {...{ reward_multiplier, vaultId }} />
+                <BaseYield {...{ base_apr, vaultId,trancheVaultAddress }} />
+                <RewardYield {...{ reward_multiplier, vaultId,trancheVaultAddress }} />
             </div>
         </div>)
 }

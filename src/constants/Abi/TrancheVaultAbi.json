@@ -1,643 +1,622 @@
 [
     {
-        "inputs": [],
-        "name": "AMOUNT_INVALID",
-        "type": "error"
+      "inputs": [],
+      "name": "AMOUNT_INVALID",
+      "type": "error"
     },
     {
-        "inputs": [],
-        "name": "CURRENTY_NOT_WNATIVE",
-        "type": "error"
+      "inputs": [],
+      "name": "CURRENTY_NOT_WNATIVE",
+      "type": "error"
     },
     {
-        "inputs": [],
-        "name": "FEE_NOT_ENOUGH",
-        "type": "error"
+      "inputs": [],
+      "name": "CallerIsNotBotRole",
+      "type": "error"
     },
     {
-        "inputs": [],
-        "name": "MSG_VALUE_NOT_MATCHED",
-        "type": "error"
+      "inputs": [],
+      "name": "CallerIsNotFeeMinter",
+      "type": "error"
     },
     {
-        "inputs": [],
-        "name": "PROTOCOL_PAUSED",
-        "type": "error"
+      "inputs": [],
+      "name": "CallerIsNotTrancheVaultManager",
+      "type": "error"
     },
     {
-        "inputs": [],
-        "name": "TOTAL_ZERO",
-        "type": "error"
+      "inputs": [],
+      "name": "FEE_NOT_ENOUGH",
+      "type": "error"
     },
     {
-        "inputs": [],
-        "name": "TRANCHE_ID_INVALID",
-        "type": "error"
+      "inputs": [],
+      "name": "MSG_VALUE_NOT_MATCHED",
+      "type": "error"
     },
     {
-        "inputs": [],
-        "name": "USER_BALANCE_NOT_ENOUGH",
-        "type": "error"
+      "inputs": [],
+      "name": "PROTOCOL_PAUSED",
+      "type": "error"
     },
     {
-        "inputs": [],
-        "name": "USER_MAX_DEPOSIT_LIMIT",
-        "type": "error"
+      "inputs": [],
+      "name": "TOTAL_ZERO",
+      "type": "error"
     },
     {
-        "inputs": [],
-        "name": "VAULT_MAX_TVL_LIMIT",
-        "type": "error"
+      "inputs": [],
+      "name": "TRANCHE_ID_INVALID",
+      "type": "error"
     },
     {
-        "anonymous": false,
-        "inputs": [
+      "inputs": [],
+      "name": "USER_BALANCE_NOT_ENOUGH",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "USER_MAX_DEPOSIT_LIMIT",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "VAULT_MAX_TVL_LIMIT",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "previousAdmin",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "AdminChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "beacon",
+          "type": "address"
+        }
+      ],
+      "name": "BeaconUpgraded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "version",
+          "type": "uint8"
+        }
+      ],
+      "name": "Initialized",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "implementation",
+          "type": "address"
+        }
+      ],
+      "name": "Upgraded",
+      "type": "event"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "fallback"
+    },
+    {
+      "inputs": [],
+      "name": "accessController",
+      "outputs": [
+        {
+          "internalType": "contract IAccessController",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "currency",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "currentTrancheInformation",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tid",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_currency",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "deposit",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "eventEmitter",
+      "outputs": [
+        {
+          "internalType": "contract IEventEmitter",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "feeModule",
+      "outputs": [
+        {
+          "internalType": "contract IFeeModule",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getTokenAddresses",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "highWaterMark",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "honeyFactory",
+      "outputs": [
+        {
+          "internalType": "contract IHoneyFactory",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
             {
-                "indexed": false,
-                "internalType": "address",
-                "name": "previousAdmin",
-                "type": "address"
+              "internalType": "address",
+              "name": "_currency",
+              "type": "address"
             },
             {
-                "indexed": false,
-                "internalType": "address",
-                "name": "newAdmin",
-                "type": "address"
-            }
-        ],
-        "name": "AdminChanged",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "beacon",
-                "type": "address"
-            }
-        ],
-        "name": "BeaconUpgraded",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "_core",
-                "type": "address"
-            }
-        ],
-        "name": "CoreUpdate",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": false,
-                "internalType": "uint8",
-                "name": "version",
-                "type": "uint8"
-            }
-        ],
-        "name": "Initialized",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "implementation",
-                "type": "address"
-            }
-        ],
-        "name": "Upgraded",
-        "type": "event"
-    },
-    {
-        "stateMutability": "payable",
-        "type": "fallback"
-    },
-    {
-        "inputs": [],
-        "name": "TIMELOCK_ROLE",
-        "outputs": [
-            {
-                "internalType": "bytes32",
-                "name": "",
-                "type": "bytes32"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "assetToken",
-        "outputs": [
-            {
-                "internalType": "contract TrancheToken",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "core",
-        "outputs": [
-            {
-                "internalType": "contract ICore",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "core_",
-                "type": "address"
-            }
-        ],
-        "name": "coreInitialize",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "currency",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "_tid",
-                "type": "uint256"
+              "internalType": "address",
+              "name": "_strategyManager",
+              "type": "address"
             },
             {
-                "internalType": "address",
-                "name": "_currency",
-                "type": "address"
+              "internalType": "address",
+              "name": "_eventEmitter",
+              "type": "address"
             },
             {
-                "internalType": "uint256",
-                "name": "_amount",
-                "type": "uint256"
-            }
-        ],
-        "name": "deposit",
-        "outputs": [],
-        "stateMutability": "payable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "eventEmitter",
-        "outputs": [
-            {
-                "internalType": "contract IEventEmitter",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "getTokenAddresses",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
+              "internalType": "address",
+              "name": "_protocolRegistry",
+              "type": "address"
             },
             {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "highWaterMark",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "honeyFactory",
-        "outputs": [
-            {
-                "internalType": "contract IHoneyFactory",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "components": [
-                    {
-                        "internalType": "address",
-                        "name": "_core",
-                        "type": "address"
-                    },
-                    {
-                        "internalType": "address",
-                        "name": "_wNative",
-                        "type": "address"
-                    },
-                    {
-                        "internalType": "address",
-                        "name": "_currency",
-                        "type": "address"
-                    },
-                    {
-                        "internalType": "address",
-                        "name": "_strategyManager",
-                        "type": "address"
-                    },
-                    {
-                        "internalType": "address",
-                        "name": "_treasury",
-                        "type": "address"
-                    },
-                    {
-                        "internalType": "uint256",
-                        "name": "_protocolFee",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "address",
-                        "name": "_eventEmitter",
-                        "type": "address"
-                    },
-                    {
-                        "internalType": "address",
-                        "name": "_protocolRegistry",
-                        "type": "address"
-                    },
-                    {
-                        "internalType": "uint256",
-                        "name": "_vaultTvlLimit",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "uint256",
-                        "name": "_userDepositLimit",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "address",
-                        "name": "_honeyFactory",
-                        "type": "address"
-                    },
-                    {
-                        "internalType": "bool",
-                        "name": "_isHoney",
-                        "type": "bool"
-                    },
-                    {
-                        "internalType": "bytes",
-                        "name": "_trancheVaultToken",
-                        "type": "bytes"
-                    }
-                ],
-                "internalType": "struct FunctionParameters.TrancheVaultInitializeParams",
-                "name": "initData",
-                "type": "tuple"
-            }
-        ],
-        "name": "init",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "isHoneyVault",
-        "outputs": [
-            {
-                "internalType": "bool",
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "protocolRegistry",
-        "outputs": [
-            {
-                "internalType": "contract IProtocolRegistry",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "proxiableUUID",
-        "outputs": [
-            {
-                "internalType": "bytes32",
-                "name": "",
-                "type": "bytes32"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "rewardToken",
-        "outputs": [
-            {
-                "internalType": "contract TrancheToken",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "rewardVaultInvestments",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "core_",
-                "type": "address"
-            }
-        ],
-        "name": "setCore",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_strategyManager",
-                "type": "address"
-            }
-        ],
-        "name": "setStrategyManager",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_userTreasury",
-                "type": "address"
-            }
-        ],
-        "name": "setUserTreasury",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "_vaultManagerFee",
-                "type": "uint256"
-            }
-        ],
-        "name": "setvaultManagerFee",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "trancheMasterInfo",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "userTreasuryAddress",
-                "type": "address"
+              "internalType": "bool",
+              "name": "_isHoney",
+              "type": "bool"
             },
             {
-                "internalType": "address",
-                "name": "strategyManager",
-                "type": "address"
+              "internalType": "bytes",
+              "name": "_trancheVaultToken",
+              "type": "bytes"
             },
             {
-                "internalType": "uint256",
-                "name": "vaultManagerFee",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_newEventEmitter",
-                "type": "address"
-            }
-        ],
-        "name": "updateEventEmitter",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "updateInvestment",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "_newDepositLimit",
-                "type": "uint256"
-            }
-        ],
-        "name": "updateUserDepositLimit",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "_newVaultLimit",
-                "type": "uint256"
-            }
-        ],
-        "name": "updateVaultTvlLimit",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "newImplementation",
-                "type": "address"
-            }
-        ],
-        "name": "upgradeTo",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "newImplementation",
-                "type": "address"
+              "internalType": "address",
+              "name": "_accessController",
+              "type": "address"
             },
             {
-                "internalType": "bytes",
-                "name": "data",
-                "type": "bytes"
-            }
-        ],
-        "name": "upgradeToAndCall",
-        "outputs": [],
-        "stateMutability": "payable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "userDepositLimit",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "vaultTvlLimit",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "wNative",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "_tid",
-                "type": "uint256"
+              "internalType": "address",
+              "name": "_feeModule",
+              "type": "address"
             },
             {
-                "internalType": "uint256",
-                "name": "_amount",
-                "type": "uint256"
+              "internalType": "address",
+              "name": "_vaultManagerConfig",
+              "type": "address"
             }
-        ],
-        "name": "withdraw",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+          ],
+          "internalType": "struct FunctionParameters.TrancheVaultInitializeParams",
+          "name": "initData",
+          "type": "tuple"
+        }
+      ],
+      "name": "init",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
-        "inputs": [],
-        "name": "yieldVaultInvestments",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "inputs": [],
+      "name": "isHoneyVault",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-        "stateMutability": "payable",
-        "type": "receive"
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "mintAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "mintYieldTokenFee",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "protocolRegistry",
+      "outputs": [
+        {
+          "internalType": "contract IProtocolRegistry",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "proxiableUUID",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rewardToken",
+      "outputs": [
+        {
+          "internalType": "contract TrancheToken",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rewardVaultInvestments",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_strategyManager",
+          "type": "address"
+        }
+      ],
+      "name": "setStrategyManager",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "strategyManager",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newEventEmitter",
+          "type": "address"
+        }
+      ],
+      "name": "updateEventEmitter",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "updateInvestment",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newImplementation",
+          "type": "address"
+        }
+      ],
+      "name": "upgradeTo",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newImplementation",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "upgradeToAndCall",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "vaultManagerConfig",
+      "outputs": [
+        {
+          "internalType": "contract IVaultManagerConfig",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "wNative",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tid",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "withdraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "yieldToken",
+      "outputs": [
+        {
+          "internalType": "contract TrancheToken",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "yieldVaultInvestments",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive"
     }
-]
+  ]

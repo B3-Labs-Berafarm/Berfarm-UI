@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function BaseYield({ base_apr, vaultId = '', tableView = false }) {
+export default function BaseYield({ base_apr, vaultId = '',trancheVaultAddress, tableView = false }) {
     const navigateUrl = () => {
         window
     }
     return (
-        <Link to={`/investment/${vaultId}?vaultTrancheType=base`}>
+        <Link to={`/investment/${trancheVaultAddress}?vaultTrancheType=base`}>
             <div className={`flex justify-between items-center p-g2 bg-act-accent1-default hover:bg-act-accent1-hover rounded-16 ${tableView ? 'min-h-[80px]' : ''} `} onClick={() => navigateUrl()}>
                 <div className='flex gap-g2 text-hi'>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

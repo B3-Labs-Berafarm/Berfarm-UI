@@ -39,10 +39,10 @@ export default function FarmTable({ vaults, tvls }) {
                     {getTvlForVaultFromTvlList(tvls, row?.trancheVaultAddress) || '-'}
                 </td>
                 <td className="py-g1 px-g2 whitespace-nowrap body-s font-body">
-                    <BaseYield {...{ row, vaultId: row?._id }} tableView={true} />
+                    <BaseYield {...{ row, vaultId: row?._id,trancheVaultAddress:row?.trancheVaultAddress }} tableView={true} />
                 </td>
                 <td className="py-g1 px-g2 whitespace-nowrap body-s font-body">
-                    <RewardYield {...{ ...row, vaultId: row?._id }} tableView={true} />
+                    <RewardYield {...{ ...row, vaultId: row?._id,trancheVaultAddress:row?.trancheVaultAddress }} tableView={true} />
                 </td>
             </tr>
         ));

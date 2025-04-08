@@ -29,7 +29,8 @@
     "typed.js": "^2.1.0",
     "underscore.string": "^3.3.6",
     "viem": "^2.23.5",
-    "wagmi": "^2.14.12"
+    "wagmi": "^2.14.12",
+    "web3": "^4.16.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",

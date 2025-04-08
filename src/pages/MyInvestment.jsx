@@ -22,7 +22,7 @@ export default function MyInvestment() {
         try {
             if (address) {
                 // TODO
-                const payload = { userAddress: '0xB7E404d794b886FDD47a70e568911513f8B7C36b' }
+                const payload = { userAddress: address }
                 const { data: { data } } = await axios.post(`${import.meta.env.VITE_API_URL}/trancheDetails/getUserInvestmentDetails`, payload);
                 console.log("setUserInvestments ", data)
                 setUserInvestments(data);

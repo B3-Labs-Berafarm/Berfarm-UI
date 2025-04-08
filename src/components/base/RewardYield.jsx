@@ -31,10 +31,10 @@ export const REWARDS_INFO = [
         value: 750,
     },
 ];
-export default function RewardYield({ reward_multiplier, vaultId = '', tableView = false }) {
+export default function RewardYield({ reward_multiplier, vaultId = '',trancheVaultAddress, tableView = false }) {
     return (
         <Link
-            to={`/investment/${vaultId}?vaultTrancheType=rewards`}>
+            to={`/investment/${trancheVaultAddress}?vaultTrancheType=rewards`}>
             <div className={`flex justify-between items-start p-g2 bg-act-accent2-default hover:bg-act-accent2-hover rounded-16 ${tableView ? 'min-h-[80px]' : ''} `}>
                 <div className='flex gap-g2  text-hi'>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

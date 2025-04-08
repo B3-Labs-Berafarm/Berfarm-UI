@@ -19,7 +19,7 @@ export default function MyHarvest() {
         try {
             // const payload = { userAddress: '0xB7E404d794b886FDD47a70e568911513f8B7C36b' }
 
-            const { data: { data } } = await axios.get(`${import.meta.env.VITE_API_URL}/trancheDetails/getActiveFarmsForUser?userAddress=${'0xB7E404d794b886FDD47a70e568911513f8B7C36b'}`);
+            const { data: { data } } = await axios.get(`${import.meta.env.VITE_API_URL}/trancheDetails/getActiveFarmsForUser?userAddress=${address}`);
             // console.log({ data })
             setActiveFarms(data?.activeFarms || []);
         } catch (error) {

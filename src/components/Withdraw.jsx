@@ -3,12 +3,25 @@ import toast from 'react-hot-toast';
 import Input from './base/Input'
 import { useReadContract, useAccount, useWriteContract, useWaitForTransactionReceipt, useSimulateContract } from 'wagmi'
 import { ADDITIONAL_CONTRACTS } from '../constants/contracts';
-import Erc20Abi from '../constants/Abi/Erc20Abi.json';
+// import Erc20Abi from '../constants/Abi/Erc20Abi.json';
 import { ethers } from "ethers";
-import TrancheVaultAbi from '../constants/abi/TrancheVaultAbi.json';
+// import TrancheVaultAbi from '../constants/abi/TrancheVaultAbi.json';
 
 export default function Withdraw({ inputBlockClassName = '', inputClassName, icon, placeholder = '', label = '', vaultType, vaultInformation }) {
     console.log("vaultInformation ", vaultInformation)
+    const [TrancheVaultAbi, setTrancheVaultAbi] = useState(null);
+    const [Erc20Abi, setErc20Abi] = useState(null);
+    console.log({ TrancheVaultAbi, Erc20Abi })
+    useEffect(() => {
+        fetch('/constants/abi/TrancheVaultAbi.json')
+            .then(response => response.json())
+            .then(data => setTrancheVaultAbi(data));
+    }, []);
+    useEffect(() => {
+        fetch('/constants/Abi/Erc20Abi.json')
+            .then(response => response.json())
+            .then(data => setErc20Abi(data));
+    }, []);
     const [userBalance, setUserBalance] = useState(0);
     const [form, setForm] = useState({ amount: 0 });
     const { address, isConnected } = useAccount();

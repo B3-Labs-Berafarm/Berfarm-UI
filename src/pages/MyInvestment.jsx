@@ -8,9 +8,12 @@ import { useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useAccount } from 'wagmi';
 import { numberToFixed } from '../utils/numbers';
+import { getTvlForVaultFromTvlList } from '../utils/tvl';
 
 export default function MyInvestment() {
     const [activeTab, setActiveTab] = React.useState("Deposit");
+    const [tvlValues, setTVLValues] = React.useState({});
+
     const chartStrategyCompositionRef = React.useRef(null);
     const chartTrancheStructureRef = React.useRef(null);
     const [strategyInformation, setStrategyInformation] = React.useState();
@@ -18,6 +21,17 @@ export default function MyInvestment() {
     const [userInvestments, setUserInvestments] = React.useState({});
     const [vaultType, setVaultType] = React.useState('base');
     const { address, isConnected } = useAccount();
+    const getTVLInfo = async () => {
+        try {
+            const { trancheVaultAddress, strategyManagerAddress } = vaultInformation;
+            const payload = { trancheVaultInfo: [{ trancheVaultAddress, strategyManagerAddress }] };
+            const { data: { data } } = await axios.post(`${import.meta.env.VITE_API_URL}/trancheDetails/trancheVaultTvl`, payload);
+            console.log({ data })
+            setTVLValues(data);
+        } catch (error) {
+            console.error(error)
+        }
+    }
     const getUserInvestments = async () => {
         try {
             if (address) {
@@ -93,7 +107,9 @@ export default function MyInvestment() {
     useEffect(() => {
         getUserInvestments();
     }, [address]);
-
+    useEffect(() => {
+        getTVLInfo()
+    }, [vaultInformation])
     useEffect(() => {
         const chart = echarts.init(chartStrategyCompositionRef.current);
         const chartData = strategyInformation?.strategies || [];
@@ -278,7 +294,7 @@ export default function MyInvestment() {
                                 <div className='text-hi mt-24 title-m font-titles font-weight-800'>
                                     Product Details
                                 </div>
-                                {PRODUCT_DETAILS.map((item, index) => (
+                                {/* {PRODUCT_DETAILS.map((item, index) => (
                                     <DataText
                                         key={`deposit-${index}`}
                                         label={item.label}
@@ -288,35 +304,35 @@ export default function MyInvestment() {
                                         labelClassName={`body-m text-med ${item.hasInfo ? 'flex items-center gap-g0h' : ''}`}
                                         infoText={item.hasInfo ? item.infoText : undefined}
                                     />
-                                ))}
-                                {/* <DataText
+                                ))} */}
+                                <DataText
                                     label={`Total Farm Value Locked`}
-                                    value={''}
+                                    value={getTvlForVaultFromTvlList(tvlValues?.vaultTvl || [], vaultInformation?.trancheVaultAddress) || '-'}
                                     dataTextClassName='flex justify-between items-center font-body'
                                     valueClassName={`font-weight-700 body-m  text-hi`}
                                     labelClassName={`body-m text-med`}
                                 />
                                 <DataText
                                     label={`Farm Status`}
-                                    value={''}
+                                    value={vaultInformation?.vaultStatus}
                                     dataTextClassName='flex justify-between items-center font-body'
                                     valueClassName={`font-weight-700 body-m  text-hi`}
                                     labelClassName={`body-m text-med`}
                                 />
                                 <DataText
-                                    label={vaultType === 'base' ? 'Fixed APR' : 'Rewards Multiplier'}
-                                    value={''}
+                                    label={vaultType === 'base' ? 'APR' : 'Rewards Multiplier'}
+                                    value={vaultType === 'base' ? '-' : '-'}
                                     dataTextClassName='flex justify-between items-center font-body'
                                     valueClassName={`font-weight-700 body-m  text-hi`}
                                     labelClassName={`body-m text-med`}
                                 />
                                 <DataText
                                     label={`Performance Fees`}
-                                    value={''}
+                                    value={'6.9%'}
                                     dataTextClassName='flex justify-between items-center font-body'
                                     valueClassName={`font-weight-700 body-m  text-hi`}
                                     labelClassName={`body-m text-med`}
-                                /> */}
+                                />
                             </div>
                         </div>
                         <div className='hidden scr-s:block scr-s:col-span-1'></div>
@@ -435,6 +451,6 @@ const depositData = [
 const PRODUCT_DETAILS = [
     { label: 'Total Farm Value Locked', value: "21,00,000 USD" },
     { label: 'Farm Status', value: "Active" },
-    { label: 'Fixed APR', value: "10%" },
+    { label: 'APR', value: "-" },
     { label: 'Performance Fees', value: "6.9%", hasInfo: true, infoText: 'This is additional information!' },
 ]

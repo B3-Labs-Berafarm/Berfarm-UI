@@ -6,7 +6,7 @@ import { ADDITIONAL_CONTRACTS } from '../constants/contracts';
 import Erc20Abi from '../constants/Abi/Erc20Abi.json';
 import { ethers } from "ethers";
 import TrancheVaultAbi from '../constants/abi/TrancheVaultAbi.json';
-export default function Deposit({ inputBlockClassName = '', inputClassName, icon, placeholder = '', label = '', vaultType }) {
+export default function Deposit({ inputBlockClassName = '', inputClassName, icon, vaultType, placeholder = '', label = '', vaultInformation = {} }) {
     const [userBalance, setUserBalance] = useState(0);
     const [form, setForm] = useState({ amount: 0 });
     const { address, isConnected } = useAccount();

@@ -65,7 +65,7 @@ export default function Withdraw({ inputBlockClassName = '', inputClassName, ico
     }
     useEffect(() => {
         getTokenBalance()
-    }, [yieldVaultInvestment, rewardVaultInvestment]);
+    }, [yieldVaultInvestment, rewardVaultInvestment, vaultType]);
 
     const handleApproveWithdraw = async () => {
         if (!isConnected || !form.amount) return;
@@ -75,11 +75,12 @@ export default function Withdraw({ inputBlockClassName = '', inputClassName, ico
             const tid = vaultType === 'base' ? "0" : "1";
             console.log("VAULT TRANCH TYPE:", vaultType);
             console.log("TID:", tid);
+            const contract_address = vaultType === 'base' ? vaultInformation?.yieldTokenAddress : vaultInformation?.rewardTokenAddress;
             writeContract({
                 abi: Erc20Abi,
-                address: ADDITIONAL_CONTRACTS.HoneyToken,
+                address: contract_address,
                 functionName: 'approve',
-                args: [ADDITIONAL_CONTRACTS.DeployedTrancheVault, amountInWei],
+                args: [vaultInformation?.trancheVaultAddress, amountInWei],
             });
             console.log('Approving deposit for amount:', form.amount);
             toast.success('Approving deposit for amount', form.amount);
@@ -96,7 +97,7 @@ export default function Withdraw({ inputBlockClassName = '', inputClassName, ico
             const tid = vaultType === 'base' ? "0" : "1";
             const { hash = '' } = await writeContract({
                 abi: TrancheVaultAbi,
-                address: ADDITIONAL_CONTRACTS.DeployedTrancheVault,
+                address: vaultInformation?.trancheVaultAddress,
                 functionName: 'withdraw',
                 args: [tid, amountInWei],
             });
@@ -127,7 +128,7 @@ export default function Withdraw({ inputBlockClassName = '', inputClassName, ico
 
             < div className='flex justify-between items-center pt-g1 px-g2h' >
                 <div className='body-s font-body text-med'>Wallet Balance</div>
-                <div className='body-s font-body font-weight-700 text-hi'>{userBalance || '-'} HONEY</div>
+                <div className='body-s font-body font-weight-700 text-hi'>{userBalance || '-'} {vaultType === 'base' ? vaultInformation?.yieldTokenSymbol : vaultInformation?.rewardTokenSymbol}</div>
             </div >
 
 

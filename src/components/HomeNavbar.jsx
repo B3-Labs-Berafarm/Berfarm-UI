@@ -269,7 +269,7 @@ function HomePageNavbar({ dapp = false }) {
 
     return (
         <>
-            <NavbarLargerScreen dapp={dapp} isDarkMode={isDarkMode} />
+            <NavbarLargerScreen dapp={dapp} isDarkMode={false} />
             {/* <NavbarMobile dapp={dapp} isDarkMode={isDarkMode} /> */}
         </>
     )

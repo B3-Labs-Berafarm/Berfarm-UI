@@ -11,8 +11,8 @@ export default function NewHome() {
     const containerRef = useRef(null);
     const [containerWidth, setContainerWidth] = useState(0);
     useEffect(() => {
-        const url = !isDarkMode ? '/assets/bg/plaster.png' : "/assets/final-assets/background_tiling.webp";
-        setImageUrl(url)
+        // const url = !isDarkMode ? '/assets/bg/plaster.png' : "/assets/final-assets/background_tiling.webp";
+        // setImageUrl(url)
     }, [isDarkMode]);
     useEffect(() => {
         // Set container width to 80% of the screen width
@@ -246,10 +246,11 @@ export default function NewHome() {
                 </div>
                 {/*  */}
                 <div className='py-[160px] text-center'>
-                    <MainTitle text='Ecosystem Partner' />
-                    <div className='container px-[16px] tab-s:px-[24px] tab-l:px-[48px] scr-m:px-90 scr-l:px-[240px] pt-[48px] grid grid-cols-12 justify-items-center scr-l:justify-items-start gap-g2 tab-s:gap-g4'>
+                    <MainTitle text='Ecosystem Integrations' />
+                    <div className='container px-[16px] tab-s:px-[24px] tab-l:px-[48px] scr-m:px-90 scr-l:px-[240px] pt-[48px] grid grid-cols-12 justify-items-center scr-l:justify-items-start gap-g4'>
                         {PARTNER_LOGOS.map((url, index) => (
-                            <motion.img initial={{ opacity: 0 }}
+                            <motion.img
+                                initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 transition={{
                                     duration: 0.6,

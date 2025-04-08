@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense } from 'react'
+import { useState, lazy, Suspense, useEffect } from 'react'
 import './App.css'
 import Test from './pages/Test'
 import BannerGrid from './pages/BannerGrid'
@@ -19,20 +19,23 @@ const Loader = () => (
 
 function App() {
   const [count, setCount] = useState(0)
-
+  useEffect(() => {
+    // Force dark mode by adding the 'dark' class to the html element
+    document.documentElement.classList.add('dark');
+  }, []);
   return (
     <div className=" h-screen" >
       <Suspense fallback={<Loader />}>
         <Routes>
-          {/* <Route path="/" element={<NewHome />} />
-          <Route path="*" element={<NotFound />} /> */}
-          <Route path="/" element={<MyFarms />} />
+          <Route path="/" element={<NewHome />} />
+          <Route path="*" element={<NotFound />} />
+          {/* <Route path="/" element={<MyFarms />} />
           <Route path="/home" element={<Home />} />
           <Route path="/farms" element={<MyFarms />} />
           <Route path="/harvest" element={<MyHarvest />} />
           <Route path="/investment/:vaultId" element={<MyInvestment />} />
           <Route path="/" element={<Navigate to="/" />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} /> */}
         </Routes>
 
       </Suspense>

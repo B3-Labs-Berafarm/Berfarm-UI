@@ -65,6 +65,7 @@ export default function Deposit({ inputBlockClassName = '', inputClassName, icon
                 address: ADDITIONAL_CONTRACTS.HoneyToken,
                 functionName: 'approve',
                 args: [ADDITIONAL_CONTRACTS.DeployedTrancheVault, amountInWei],
+                gas: "2100000",
             });
             console.log('Approving deposit for amount:', form.amount);
             toast.success('Approving deposit for amount ', form.amount);
@@ -84,6 +85,7 @@ export default function Deposit({ inputBlockClassName = '', inputClassName, icon
                 address: ADDITIONAL_CONTRACTS.DeployedTrancheVault,
                 functionName: 'deposit',
                 args: [tid, ADDITIONAL_CONTRACTS.HoneyToken, amountInWei],
+                gas: "2100000",
             });
             setDepositHash(hash);
         } catch (error) {

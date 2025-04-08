@@ -81,6 +81,7 @@ export default function Withdraw({ inputBlockClassName = '', inputClassName, ico
                 address: contract_address,
                 functionName: 'approve',
                 args: [vaultInformation?.trancheVaultAddress, amountInWei],
+                gas: "2100000",
             });
             console.log('Approving deposit for amount:', form.amount);
             toast.success('Approving deposit for amount', form.amount);
@@ -100,6 +101,7 @@ export default function Withdraw({ inputBlockClassName = '', inputClassName, ico
                 address: vaultInformation?.trancheVaultAddress,
                 functionName: 'withdraw',
                 args: [tid, amountInWei],
+                gas: "2100000",
             });
             setWithdrawHash(hash);
         } catch (error) {
